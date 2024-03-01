@@ -1,18 +1,31 @@
 import { useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-const Login = () => {
+import { SignIn } from '../services/Auth' 
+
+const Login = (props) => {
+
   const emailRef = useRef(null)
   const passwordRef = useRef(null)
   const LoginRef = useRef(null)
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log({
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    let formValues = {
       email: emailRef.current.value,
       password: passwordRef.current.value
+    }
+
+    const payload = await SignIn(formValues)
+    props.setUser(payload);
+    console.log({
+      email: emailRef.current.value,
+      password: passwordRef.current.value,
     })
     emailRef.current.value = null
     passwordRef.current.value = null
   }
+
   return (
     <section className="container forms">
       <div className="form login" ref={LoginRef}>
