@@ -1,4 +1,5 @@
 import './App.css'
+import { useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Nav from './components/Nav'
 import Home from './pages/Home'
@@ -8,6 +9,9 @@ import About from './pages/About'
 import Login from './pages/Login'
 import Register from './pages/Register'
 const App = () => {
+
+  const [user, setUser] = useState(null);
+
   return (
     <div>
       <header>
