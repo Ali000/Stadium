@@ -7,6 +7,7 @@ import StadiumsList from './pages/StadiumsList'
 import About from './pages/About'
 import Login from './pages/Login'
 import Register from './pages/Register'
+import TeamsList from "./pages/TeamsList"
 const App = () => {
   return (
     <div>
@@ -21,6 +22,7 @@ const App = () => {
           <Route path='/About' element={<About />} />
           <Route path='/Login' element={<Login />} />
           <Route path='/Register' element={<Register/>} />
+          <Route path='/TeamsList' element={<TeamsList />} />
         </Routes>
       </main>
     </div>

@@ -15,7 +15,7 @@ const Register = () => {
     passwordRef.current.value = null
   }
   return (
-    <section className="container forms">
+    <section className="container-login  forms">
       <div className="form signup" ref={SignupRef}>
         <div className="form-content">
           <header>Signup</header>
