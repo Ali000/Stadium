@@ -1,19 +1,32 @@
 import { useRef } from 'react'
 import { Link } from 'react-router-dom'
+import { SignUp } from '../services/Auth'
+
 const Register = () => {
+
+  const nameRef = useRef(null);
   const emailRef = useRef(null)
   const passwordRef = useRef(null)
   const passwordComRef = useRef(null)
   const SignupRef = useRef(null)
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
+    await SignUp({
+      name: "no name",
+      email: emailRef.current.value,
+      password: passwordRef.current.value,
+      role: "Admin"
+    });
     console.log({
       email: emailRef.current.value,
-      password: passwordRef.current.value
+      password: passwordRef.current.value,
+      ComparePassword: passwordComRef.current.value 
     })
     emailRef.current.value = null
     passwordRef.current.value = null
   }
+
   return (
     <section className="container-login  forms">
       <div className="form signup" ref={SignupRef}>

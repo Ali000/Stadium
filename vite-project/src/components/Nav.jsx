@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-const Nav = () => {
+const Nav = ({user}) => {
   return (
     <div>
       <nav className="nav-bar">
@@ -7,8 +7,9 @@ const Nav = () => {
         <Link to="/MatchesList">MatchesList</Link>
         <Link to="/StadiumsList">StadiumsList</Link>
         <Link to="/About">About</Link>
-        <Link to="/Login">Login</Link>
-        <Link to="/TeamsList">TeamsList</Link>
+        {
+          user ? <Link>Logout</Link> : <Link to="/Login">Login</Link>
+        }
       </nav>
     </div>
   )
