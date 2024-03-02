@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { Client } from '../services/api'
+import Client  from '../services/api'
 import Search from '../components/Search'
 import TeamCard from "../components/TeamCard"
 const TeamsList = () => {

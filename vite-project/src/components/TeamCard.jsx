@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 const TeamCard = ({ team }) => {
   const navigate = useNavigate()
   const handleClick = () => {
-    navigate(`/team/${team._id}`)
+    navigate(`/Team/${team._id}`)
   }
   return (
     <div className="card game-card" onClick={handleClick}>
