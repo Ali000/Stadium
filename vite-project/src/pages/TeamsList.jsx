@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import Client  from '../services/api'
 import Search from '../components/Search'
 import TeamCard from "../components/TeamCard"
+import NewTeamCard from '../components/NewTeamCard'
 const TeamsList = () => {
   const searchRef = useRef(null)
   const [searchResults, setSearchResults] = useState([])
@@ -45,6 +46,7 @@ const TeamsList = () => {
         )}
        
       </div>
+<NewTeamCard />
   </div>)
 }
 export default TeamsList
