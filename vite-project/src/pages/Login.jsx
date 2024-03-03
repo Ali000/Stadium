@@ -16,11 +16,6 @@ const Login = (props) => {
       password: passwordRef.current.value
     }
 
-    console.log({
-      email: emailRef.current.value,
-      password: passwordRef.current.value,
-    })
-
     const payload = await SignIn(formValues)
     props.setUser(payload);
     
