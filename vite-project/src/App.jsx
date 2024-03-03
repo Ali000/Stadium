@@ -27,9 +27,11 @@ const App = () => {
   }, [])
 
   const checkToken = async () => {
-    const user = await CheckSession()
-    console.log(user)
-    setUser(user)
+    const user = await CheckSession();
+    if (user) {
+      setUser(user);
+    }
+    
   }
 
   return (
