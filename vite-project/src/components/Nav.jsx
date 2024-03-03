@@ -7,6 +7,7 @@ const Nav = ({user}) => {
         <Link to="/MatchesList">MatchesList</Link>
         <Link to="/StadiumsList">StadiumsList</Link>
         <Link to="/About">About</Link>
+        <Link to="/TeamsList">TeamsList</Link>
         {
           user ? <Link>Logout</Link> : <Link to="/Login">Login</Link>
         }

@@ -16,19 +16,21 @@ const Login = (props) => {
       password: passwordRef.current.value
     }
 
-    const payload = await SignIn(formValues)
-    props.setUser(payload);
-    
     console.log({
       email: emailRef.current.value,
       password: passwordRef.current.value,
     })
+
+    const payload = await SignIn(formValues)
+    props.setUser(payload);
+    
+    
     emailRef.current.value = null
     passwordRef.current.value = null
   }
 
   return (
-    <section className="container forms">
+    <section className="container-login  forms">
       <div className="form login" ref={LoginRef}>
         <div className="form-content">
           <header>Login</header>
