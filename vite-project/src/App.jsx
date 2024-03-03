@@ -9,6 +9,10 @@ import StadiumsList from './pages/StadiumsList'
 import About from './pages/About'
 import Login from './pages/Login'
 import Register from './pages/Register'
+import TeamsList from "./pages/TeamsList"
+import Team from "./pages/Team"
+import TeamUpdate from './pages/TeamUpdate'
+import AddTeam from "./pages/AddTeam"
 const App = () => {
 
   const [user, setUser] = useState(null);
@@ -39,6 +43,10 @@ const App = () => {
           <Route path='/About' element={<About />} />
           <Route path='/Login' element={<Login setUser={setUser} />} />
           <Route path='/Register' element={<Register/>} />
+          <Route path='/TeamsList' element={<TeamsList />} />
+          <Route path='/Team/:id' element={<Team />} />
+          <Route path='/Team/Update/:id' element={<TeamUpdate />}/>
+          <Route path='Team/New' element={<AddTeam />} />
         </Routes>
       </main>
     </div>
