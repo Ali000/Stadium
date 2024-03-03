@@ -34,10 +34,16 @@ const App = () => {
     
   }
 
+  const handleLogOut = () => {
+    //Reset all auth related state and clear localStorage
+    setUser(null)
+    localStorage.clear()
+  }
+
   return (
     <div>
       <header>
-        <Nav user={user} />
+        <Nav user={user} logOut={handleLogOut} />
       </header>
       <main>
         <Routes>
