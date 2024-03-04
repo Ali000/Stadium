@@ -57,7 +57,7 @@ const App = () => {
           <Route path="/Team/:id" element={<Team />} />
           <Route path="/Team/Update/:id" element={<TeamUpdate />} />
           <Route path="/Team/New" element={<AddTeam />} />
-          <Route path="/Stadium/:id" element={<Stadium />} />
+          <Route path="/Stadium/:id" element={<Stadium user={user} />} />
           <Route path="/Stadium/Update/:id" element={<StadiumUpdate />} />
           <Route path="/Stadium/New" element={<AddStadium />} />
           <Route path="/match/new" element={<NewMatchCard />} />

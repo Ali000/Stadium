@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom"
-const NewMatchCard = () => {
+const NewMatchCard = (props) => {
   const navigate = useNavigate()
   // navigate(`/Match/New`)
   const handleClick = () => {}
@@ -7,7 +7,13 @@ const NewMatchCard = () => {
 
   let obj = {
     name: "",
-    image: "",
+    from: "",
+    to: "",
+    stadium: props.stadium,
+    home: "",
+    away: "",
+    price: "",
+    // result:""
   }
 
   const handleChange = (e) => {
