@@ -29,7 +29,7 @@ const StadiumsList = () => {
   }
 
   return (
-    <div className="">
+    <div className='Stadiums-List-Page'>
       <Search onSubmit={handleSubmit} searchRef={searchRef} />
       <h1>Stadiums List</h1>
       <div className="container stadium-card-wrap">
