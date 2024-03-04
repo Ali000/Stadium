@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import Client from "../services/api"
+import NewMatchCard from "../components/NewMatchCard"
 
 const Stadium = ({ user }) => {
   const navigate = useNavigate()
@@ -92,7 +93,6 @@ const Stadium = ({ user }) => {
           <div>
             <button onClick={handleDelete}>Delete</button>
             <button onClick={handleUpdate}>Update</button>
-            <NewMatchCard />
           </div>
           <div>
             <h3>Book Stadium</h3>
@@ -127,6 +127,8 @@ const Stadium = ({ user }) => {
           </div>
         </div>
       ) : null}
+      NewMatchCard:
+      <NewMatchCard stadium={stadiumDetails} />
     </div>
   )
 }
