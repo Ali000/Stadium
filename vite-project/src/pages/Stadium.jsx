@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import Client from '../services/api'
 import NewMatchCard from "../components/NewMatchCard"
 import stadiumDefaultImg from "../images/stadiumDefault.jpg";
+import { Carousel } from '../components/Carousel';
 
 const Stadium = ({ user }) => {
   const navigate = useNavigate()
@@ -11,6 +12,21 @@ const Stadium = ({ user }) => {
   const [bookingTo, setBookingTo] = useState("")
   const [isBooked, setIsBooked] = useState(false)
   let { id } = useParams()
+  const slides = [ //data for carousel test
+    {
+      "src": "https://picsum.photos/seed/img1/600/400",
+      "alt": "Image 1 for carousel"
+    },
+    {
+      "src": "https://picsum.photos/seed/img2/600/400",
+      "alt": "Image 2 for carousel"
+    },
+    {
+      "src": "https://picsum.photos/seed/img3/600/400",
+      "alt": "Image 3 for carousel"
+    }
+  ]
+
 
   useEffect(() => {
     Client.get(`/stadiums/${id}`)
@@ -85,17 +101,23 @@ const Stadium = ({ user }) => {
 
   return (
     <div>
+      <Carousel data={slides} />
       {stadiumDetails ? (
-        <div>
-          <div><img src={stadiumDefaultImg} alt={stadiumDetails.name} /></div>
-          <h2>{stadiumDetails.name}</h2>
-          <h4>Sport: {stadiumDetails.sport}</h4>
-          <h4>Seats: {stadiumDetails.seats}</h4>
-          <h4>Location: {stadiumDetails.location}</h4>
-          <div>
-            <button onClick={handleDelete}>Delete</button>
-            <button onClick={handleUpdate}>Update</button>
+        <div className="stadium-show">
+          <div className="stadium-img">
+            <img src={stadiumDefaultImg} alt={stadiumDetails.name} />
           </div>
+          <div>
+            <h2>{stadiumDetails.name}</h2>
+            <h4>Sport: {stadiumDetails.sport}</h4>
+            <h4>Seats: {stadiumDetails.seats}</h4>
+            <h4>Location: {stadiumDetails.location}</h4>
+            <div>
+              <button onClick={handleDelete}>Delete</button>
+              <button onClick={handleUpdate}>Update</button>
+            </div>
+          </div>
+          
           <div>
             <h3>Book Stadium</h3>
             <form onSubmit={handleBookingSubmit}>
