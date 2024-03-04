@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react'
 import Client from '../services/api'
-
 const Profile = ({ userId }) => {
   const [userData, setUserData] = useState({})
   const [relatedData, setRelatedData] = useState([])
-
   useEffect(() => {
     Client.get(`/users/${userId}`)
       .then((response) => {
