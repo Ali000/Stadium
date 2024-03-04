@@ -7,6 +7,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 
+
 const StadiumCard = ({ stadium }) => {
   const navigate = useNavigate()
   const handleClick = () => {
