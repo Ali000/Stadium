@@ -29,7 +29,7 @@ const Nav = ({ user, logOut }) => {
   const DrawerList = (
     <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
       <List>
-        <ListSubheader></ListSubheader>
+        <ListSubheader>All lists</ListSubheader>
         {['StadiumsList', 'MatchesList', 'TeamsList'].map((text, index) => (
           <ListItem key={text} disablePadding>
             <Link
@@ -50,6 +50,7 @@ const Nav = ({ user, logOut }) => {
       </List>
       <Divider />
       <List>
+      <ListSubheader>Settings</ListSubheader>
         {['Home', 'Profile', 'About'].map((text, index) => (
           <ListItem key={text} disablePadding>
             <Link
