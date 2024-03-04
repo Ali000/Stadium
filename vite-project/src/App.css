@@ -192,9 +192,7 @@ nav * {
 .Stadiums-List-Page {
   margin-top: 50px;
 }
-.HomePage {
-  margin-top: 50px;
-}
+
 .stadium-card-wrap {
   display: flex;
   flex-wrap: wrap;
@@ -210,4 +208,46 @@ nav * {
 
 .anchor-no-line {
   text-decoration: none;
+}
+.HomePage {
+  position:static; 
+  margin-top: -70px;
+}
+
+.Home-moto {
+  position: absolute;
+  z-index: 10;
+  color: rgb(166, 129, 8);
+  left: 50%;
+  top: 110%;
+  transform: translate(-50%, -50%);
+}
+
+.Home-box {
+  position: absolute;
+  z-index: 10;
+  left: 14%;
+  top: 30%; 
+  transform: translate(-50%, -50%);
+  height: 150px;
+  width: 450px;
+  opacity: 0.8;
+  background-color:rgb(166, 129, 8); ;
+  border: 1px solid rgb(166, 129, 8);
+  border-top-right-radius:50px;
+  border-bottom-right-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Home-title {
+  margin: 0; 
+}
+.matches-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+  gap: 20px; 
 }
