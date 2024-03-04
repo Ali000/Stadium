@@ -195,3 +195,19 @@ nav * {
 .HomePage {
   margin-top: 50px;
 }
+.stadium-card-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.stadium-card-single {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.anchor-no-line {
+  text-decoration: none;
+}

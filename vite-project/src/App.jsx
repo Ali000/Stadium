@@ -16,23 +16,21 @@ import AddTeam from './pages/AddTeam'
 import Stadium from './pages/Stadium'
 import StadiumUpdate from './pages/StadiumUpdate'
 import AddStadium from './pages/AddStadium'
-import Profile from "./pages/Profile"
 const App = () => {
   const [user, setUser] = useState(null)
 
   useEffect(() => {
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem("token")
     if (token) {
       checkToken()
     }
   }, [])
 
   const checkToken = async () => {
-    const user = await CheckSession();
+    const user = await CheckSession()
     if (user) {
-      setUser(user);
+      setUser(user)
     }
-    
   }
 
   const handleLogOut = () => {
@@ -61,7 +59,6 @@ const App = () => {
           <Route path="/Stadium/:id" element={<Stadium user={user} />} />
           <Route path="/Stadium/Update/:id" element={<StadiumUpdate />} />
           <Route path="/Stadium/New" element={<AddStadium />} />
-          <Route path="/Profile" element={<Profile />} />
         </Routes>
       </main>
     </div>

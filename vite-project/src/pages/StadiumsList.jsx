@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 import Client from '../services/api'
 import Search from '../components/Search'
 import StadiumCard from '../components/StadiumCard'
@@ -9,10 +10,9 @@ const StadiumsList = () => {
   const [stadiums, setStadiums] = useState([])
   const [pressed, setPresssed] = useState(false)
   useEffect(() => {
-    Client.get('/stadiums')
+    Client.get("/stadiums")
       .then((response) => {
         setStadiums(response.data)
-        console.log(response.data)
       })
       .catch((error) => {
         console.log(error)
@@ -32,18 +32,20 @@ const StadiumsList = () => {
     <div className='Stadiums-List-Page'>
       <Search onSubmit={handleSubmit} searchRef={searchRef} />
       <h1>Stadiums List</h1>
-      <div className="container" key={Math.random()}>
+      <div className="container stadium-card-wrap">
         {pressed ? (
           searchResults.length > 0 ? (
-            searchResults.map((stadium) => <StadiumCard key={stadium._id} stadium={stadium} />)
+            searchResults.map((stadium) => (
+              <StadiumCard key={stadium._id} stadium={stadium} />
+            ))
           ) : (
             <h2>No Stadiums Found</h2>
           )
         ) : (
           stadiums.map((stadium) => (
-            <>
-              <StadiumCard key={stadium._id} stadium={stadium} />
-            </>
+            <div className="stadium-card-single"  key={stadium._id}>
+              <Link className='anchor-no-line' to={"/Stadium/" + stadium._id}><StadiumCard key={stadium._id} stadium={stadium} /></Link>
+            </div>
           ))
         )}
       </div>
