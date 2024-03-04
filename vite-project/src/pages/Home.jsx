@@ -4,7 +4,7 @@ import Button from '@mui/material/Button';
 
 const Home = () => {
   return (
-    <div>
+    <div className="HomePage">
       <h1> Home</h1>
       <Button variant="contained">Contained</Button>
     </div>

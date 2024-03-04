@@ -10,7 +10,7 @@ const StadiumsList = () => {
   const [stadiums, setStadiums] = useState([])
   const [pressed, setPresssed] = useState(false)
   useEffect(() => {
-    Client.get('/stadiums')
+    Client.get("/stadiums")
       .then((response) => {
         setStadiums(response.data)
       })
@@ -29,13 +29,15 @@ const StadiumsList = () => {
   }
 
   return (
-    <div className="">
+    <div className='Stadiums-List-Page'>
       <Search onSubmit={handleSubmit} searchRef={searchRef} />
       <h1>Stadiums List</h1>
       <div className="container stadium-card-wrap">
         {pressed ? (
           searchResults.length > 0 ? (
-            searchResults.map((stadium) => <StadiumCard key={stadium._id} stadium={stadium} />)
+            searchResults.map((stadium) => (
+              <StadiumCard key={stadium._id} stadium={stadium} />
+            ))
           ) : (
             <h2>No Stadiums Found</h2>
           )
