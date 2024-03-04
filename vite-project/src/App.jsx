@@ -34,10 +34,16 @@ const App = () => {
     
   }
 
+  const handleLogOut = () => {
+    //Reset all auth related state and clear localStorage
+    setUser(null)
+    localStorage.clear()
+  }
+
   return (
     <div>
       <header>
-        <Nav user={user} />
+        <Nav user={user} logOut={handleLogOut} />
       </header>
       <main>
         <Routes>
@@ -50,7 +56,7 @@ const App = () => {
           <Route path="/TeamsList" element={<TeamsList />} />
           <Route path="/Team/:id" element={<Team />} />
           <Route path="/Team/Update/:id" element={<TeamUpdate />} />
-          <Route path="Team/New" element={<AddTeam />} />
+          <Route path="/Team/New" element={<AddTeam />} />
           <Route path="/Stadium/:id" element={<Stadium />} />
           <Route path="/Stadium/Update/:id" element={<StadiumUpdate />} />
           <Route path="/Stadium/New" element={<AddStadium />} />
