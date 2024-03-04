@@ -1,14 +1,13 @@
 import { useState, useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import Client from "../services/api"
-import NewMatchCard from "../components/NewMatchCard"
 
-// const Match = ({ matchDetails, setMatchDetails, user }) => {
-const Match = () => {
+const Match = (props) => {
   const navigate = useNavigate()
   const [matchDetails, setMatchDetails] = useState({})
   // const [found, setFound] = useState(false)
   let { id } = useParams()
+  let oldMatchDetails
   let from
   let to
 
@@ -16,6 +15,7 @@ const Match = () => {
     const getMatch = async () => {
       const response = await Client.get("/matches/" + id)
       console.log(response.data)
+      oldMatchDetails = response.data
       from = new Date(response.data.time.from)
       to = new Date(response.data.time.to)
       response.data.time.from = `${from.getFullYear()}-${from.getMonth()}-${from.getDay()}`
@@ -24,7 +24,17 @@ const Match = () => {
     }
 
     getMatch()
-  }, [id])
+  }, [id, props])
+
+  const buyticket = async () => {
+    const response = await Client.post("/tickets/", {
+      user: props.user.id,
+      match: matchDetails._id,
+      price: matchDetails.price,
+    })
+    setMatchDetails((prev) => ({ ...prev, seats: prev.seats - 1 }))
+    // navigate("/match/" + id)
+  }
   return (
     <div>
       <h3>Name: {matchDetails.name} </h3>
@@ -36,24 +46,16 @@ const Match = () => {
         time: from: {matchDetails?.time?.from} to: {matchDetails?.time?.to}
       </h3>
       <h3>Price for the ticket: {matchDetails?.price}</h3>
+      {matchDetails?.seats > 0 ? (
+        <>
+          <h3>available seats: {matchDetails?.seats}</h3>
+          <button onClick={buyticket}>buy a ticket</button>
+        </>
+      ) : (
+        <div>no seats available</div>
+      )}
     </div>
   )
-}
-
-{
-  /* team 1 : {matchDetails ? matchDetails?.teams?.away?.name : null} */
-}
-{
-  /* {found ? matchDetails.teams.away.name : "loading"} */
-}
-{
-  /* {matchDetails &&
-          matchDetails.team &&
-          matchDetails.team.home &&
-          matchDetails.team.away.name} */
-}
-{
-  /* {matchDetails.team ? matchDetails.team.away.name : "loading"} */
 }
 
 export default Match
