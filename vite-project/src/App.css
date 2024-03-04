@@ -171,3 +171,26 @@ a.google span {
 nav * {
   margin-right: 20px;
 }
+.nav-bar {
+  position: fixed;
+  top: 0;
+  background-color: #fff;
+  border: 1px solid black;
+  width: 100%; 
+  display: flex;
+  justify-content: space-between; 
+  padding: 0 25px; 
+}
+
+.Login {
+  display: flex;
+  align-items: center;
+  
+}
+.Login *{
+  font-size: 30px;
+  
+}
+.Stadiums-List-Page {
+  margin-top: 50px;
+}
