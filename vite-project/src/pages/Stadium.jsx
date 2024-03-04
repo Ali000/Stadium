@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
-import Client from '../services/api'
-import Players from '../components/Players'
+import { useState, useEffect } from "react"
+import { useNavigate, useParams } from "react-router-dom"
+import Client from "../services/api"
+import Players from "../components/Players"
 const Stadium = () => {
   const navigate = useNavigate()
   const [stadiumDetails, setStadiumDetails] = useState({})
@@ -17,7 +17,7 @@ const Stadium = () => {
   }, [id])
   const handleDelete = () => {
     Client.delete(`/stadiums/${id}`, {}).then((response) => {
-      navigate('/StadiumsList')
+      navigate("/StadiumsList")
     })
   }
   const handleUpdate = () => {
@@ -34,6 +34,7 @@ const Stadium = () => {
           <div>
             <button onClick={handleDelete}>Delete</button>
             <button onClick={handleUpdate}>Update</button>
+            <NewMatchCard />
           </div>
         </div>
       ) : null}
