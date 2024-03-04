@@ -1,15 +1,15 @@
-import { useEffect, useRef, useState } from 'react'
-import Client from '../services/api'
-import Search from '../components/Search'
-import StadiumCard from '../components/StadiumCard'
-import NewStadiumCard from '../components/NewStadiumCard'
+import { useEffect, useRef, useState } from "react"
+import Client from "../services/api"
+import Search from "../components/Search"
+import StadiumCard from "../components/StadiumCard"
+import NewStadiumCard from "../components/NewStadiumCard"
 const StadiumsList = () => {
   const searchRef = useRef(null)
   const [searchResults, setSearchResults] = useState([])
   const [stadiums, setStadiums] = useState([])
   const [pressed, setPresssed] = useState(false)
   useEffect(() => {
-    Client.get('/stadiums')
+    Client.get("/stadiums")
       .then((response) => {
         setStadiums(response.data)
         console.log(response.data)
@@ -35,7 +35,9 @@ const StadiumsList = () => {
       <div className="container" key={Math.random()}>
         {pressed ? (
           searchResults.length > 0 ? (
-            searchResults.map((stadium) => <StadiumCard key={stadium._id} stadium={stadium} />)
+            searchResults.map((stadium) => (
+              <StadiumCard key={stadium._id} stadium={stadium} />
+            ))
           ) : (
             <h2>No Stadiums Found</h2>
           )

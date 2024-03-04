@@ -1,8 +1,4 @@
-const Match=()=>{
-  return (
-    <div>
-
-    </div>
-  )
+const Match = () => {
+  return <div>MAAAAAAAA</div>
 }
 export default Match
