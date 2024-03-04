@@ -17,6 +17,7 @@ import Stadium from "./pages/Stadium"
 import StadiumUpdate from "./pages/StadiumUpdate"
 import AddStadium from "./pages/AddStadium"
 import NewMatchCard from "./components/NewMatchCard"
+import Match from "./pages/Match"
 const App = () => {
   const [user, setUser] = useState(null)
 
@@ -61,6 +62,7 @@ const App = () => {
           <Route path="/Stadium/Update/:id" element={<StadiumUpdate />} />
           <Route path="/Stadium/New" element={<AddStadium />} />
           <Route path="/match/new" element={<NewMatchCard />} />
+          <Route path="/match/:id" element={<Match />} />
         </Routes>
       </main>
     </div>
