@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import Client from '../services/api'
+import stadiumDefaultImg from "../images/stadiumDefault.jpg";
 
 const Stadium = ({ user }) => {
   const navigate = useNavigate()
@@ -85,6 +86,7 @@ const Stadium = ({ user }) => {
     <div>
       {stadiumDetails ? (
         <div>
+          <img src={stadiumDefaultImg} alt="" />
           <h2>{stadiumDetails.name}</h2>
           <h4>Sport: {stadiumDetails.sport}</h4>
           <h4>Seats: {stadiumDetails.seats}</h4>
