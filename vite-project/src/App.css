@@ -211,3 +211,19 @@ nav * {
 .anchor-no-line {
   text-decoration: none;
 }
+
+.black-bg {
+  background-color: #000000;
+}
+
+.black-font {
+  color: #000000;
+}
+
+.gold-font {
+  color: #F0A500;
+}
+
+.gold-bg {
+  background-color: #F0A500;  
+}
