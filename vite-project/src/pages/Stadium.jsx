@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import Client from '../services/api'
 
-const Stadium = () => {
+const Stadium = ({ user }) => {
   const navigate = useNavigate()
   const [stadiumDetails, setStadiumDetails] = useState({})
   const [bookingFrom, setBookingFrom] = useState('')
@@ -67,7 +67,10 @@ const Stadium = () => {
       ]
     }
 
-    Client.put(`/stadiums/${id}`, updatedStadiumDetails)
+    Client.put(`/stadiums/${id}`, {
+      stadium: updatedStadiumDetails,
+      user: user
+    })
       .then((response) => {
         console.log('Booking successful:', response.data)
         setStadiumDetails(response.data)
