@@ -16,6 +16,20 @@ main {
   margin-top: 45px;
 }
 
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.team-card {
+  width: 22%;
+  margin: 20px;
+}
+
+.pages-title {
+  text-align: center;
+}
+
 .stadium-caro-match {
   display: flex;
   flex-direction: column;
