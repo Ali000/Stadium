@@ -40,7 +40,6 @@ const NewMatchCard = (props) => {
   let obj = {
     name: "",
     from: "",
-    to: "",
     stadium: props.stadium,
     home: "",
     away: "",
@@ -49,11 +48,14 @@ const NewMatchCard = (props) => {
   }
 
   const handleChange = (e) => {
+    console.log("🚀 ~ handleChange ~ e:", e.target.value)
+    console.log("🚀 ~ handleChange ~ e.target:", e.target)
+
     obj = {
       ...obj,
-      [e.target.id]: e.target.value,
+      [e.target.name]: e.target.value,
     }
-    // console.log(obj)
+    console.log(obj)
   }
 
   const handleSubmit = async (e) => {
@@ -62,7 +64,7 @@ const NewMatchCard = (props) => {
     console.log(obj)
     const dataToBeSend = {
       name: obj.name,
-      time: { from: obj.from, to: obj.to },
+      time: obj.from,
       stadium: obj.stadium._id,
       teams: { home: obj.home, away: obj.away },
       price: obj.price,
@@ -71,7 +73,7 @@ const NewMatchCard = (props) => {
     // console.log(dataToBeSend)
     const response = await Client.post("/matches", dataToBeSend)
     // console.log(response.data)
-    //  await Client.put("/matches", dataToBeSend)
+    // await Client.put("/matches", dataToBeSend)
 
     // navigate("/stadium/" + props.stadium._id)
     e.target.reset()
@@ -112,6 +114,7 @@ const NewMatchCard = (props) => {
                   <TextField
                     type="text"
                     id="name"
+                    name="name"
                     onChange={handleChange}
                     placeholder="Name"
                   ></TextField>
@@ -119,21 +122,16 @@ const NewMatchCard = (props) => {
                   <TextField
                     type="date"
                     id="from"
+                    name="from"
                     onChange={handleChange}
                   ></TextField>
-                  <label htmlFor="to">To </label>
 
-                  <TextField
-                    type="date"
-                    id="to"
-                    onChange={handleChange}
-                    variant="outlined"
-                  ></TextField>
                   <label htmlFor="home">first team:</label>
                   <TextField
+                    onChange={handleChange}
                     helperText="Please select home team"
                     name="home"
-                    id="name"
+                    id="home"
                     select
                     label="Select"
                   >
@@ -145,8 +143,10 @@ const NewMatchCard = (props) => {
                   </TextField>
                   <label htmlFor="away">second team:</label>
                   <TextField
+                    onChange={handleChange}
                     helperText="Please select away team"
                     id="away"
+                    name="away"
                     select
                     label="Select"
                   >
@@ -160,6 +160,7 @@ const NewMatchCard = (props) => {
                   <TextField
                     type="number"
                     id="price"
+                    name="price"
                     onChange={handleChange}
                   ></TextField>
                   <div>
