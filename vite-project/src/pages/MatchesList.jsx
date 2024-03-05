@@ -40,11 +40,7 @@ const MatchesList = () => {
             <h2>No Matches Found</h2>
           )
         ) : (
-          matches.map((match) => (
-            <>
-              <MatchCard key={match._id} match={match} />
-            </>
-          ))
+          matches.map((match) => <MatchCard key={match._id} match={match} />)
         )}
       </div>
     </div>
