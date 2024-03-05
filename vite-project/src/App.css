@@ -7,6 +7,11 @@
   font-family: 'Poppins', sans-serif;
 }
 
+body {
+  background-color: #333;
+  color: #F0A500;
+}
+
 main {
   margin-top: 45px;
 }
@@ -46,9 +51,9 @@ header {
   color: #232836;
   text-align: center;
 }
-form {
+/* form {
   margin-top: 30px;
-}
+} */
 .form .field {
   position: relative;
   height: 50px;
@@ -185,6 +190,7 @@ nav * {
   display: flex;
   justify-content: space-between;
   padding: 0 25px;
+  z-index: 1;
 }
 
 .Login {
@@ -239,13 +245,18 @@ nav * {
 
 .stadium-img {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
 }
 
-.stadium-img img {
+.stadium-edit-btn {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* .stadium-img img {
   width: 60%;
   border-radius: 30px;
-}
+} */
 
 .stadium-show {
   padding: 30px;
@@ -256,7 +267,7 @@ nav * {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 600px;
+  width: 60%;
   height: 400px;
 }
 
@@ -311,4 +322,17 @@ nav * {
 
 .indicator-inactive {
   background-color: grey;
+}
+
+.stadium-book-form {
+  margin-top: 30px;
+}
+
+.stadium-info-form-wrap {
+  width: 30%;
+}
+
+.stadium-book-from {
+  display: flex;
+  justify-content: space-between;
 }

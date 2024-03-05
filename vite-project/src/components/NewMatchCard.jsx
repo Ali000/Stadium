@@ -24,7 +24,7 @@ const NewMatchCard = (props) => {
       ...obj,
       [e.target.id]: e.target.value,
     }
-    console.log(obj)
+    // console.log(obj)
   }
 
   const handleSubmit = async (e) => {
@@ -38,9 +38,9 @@ const NewMatchCard = (props) => {
       price: obj.price,
       seats: obj.stadium.seats,
     }
-    console.log(dataToBeSend)
+    // console.log(dataToBeSend)
     const response = await Client.post("/matches", dataToBeSend)
-    console.log(response.data)
+    // console.log(response.data)
     //  await Client.put("/matches", dataToBeSend)
 
     // navigate("/stadium/" + props.stadium._id)
@@ -56,7 +56,7 @@ const NewMatchCard = (props) => {
           arrayOfTeams.push(team)
         }
       })
-      console.log(response.data)
+      // console.log(response.data)
       setTeams(arrayOfTeams)
     }
     getTeams()
@@ -73,13 +73,13 @@ const NewMatchCard = (props) => {
       <label htmlFor="home">first team:</label>
       <select name="home" id="home" onClick={handleChange}>
         {teams.map((team) => (
-          <option value={team._id}> {team.name}</option>
+          <option key={team._id} value={team._id}> {team.name}</option>
         ))}
       </select>
       <label htmlFor="away">second team:</label>
       <select name="away" id="away" onClick={handleChange}>
         {teams.map((team) => (
-          <option value={team._id}> {team.name}</option>
+          <option key={team._id} value={team._id}> {team.name}</option>
         ))}
       </select>
 
