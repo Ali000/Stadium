@@ -1,14 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
-  color: #F0A500;
+  color: #f0a500;
 }
 
 main {
@@ -122,7 +122,7 @@ header {
   background-color: #d4d4d4;
 }
 .line::before {
-  content: 'Or';
+  content: "Or";
   position: absolute;
   top: 50%;
   left: 50%;
@@ -231,11 +231,11 @@ nav * {
 }
 
 .gold-font {
-  color: #F0A500;
+  color: #f0a500;
 }
 
 .gold-bg {
-  background-color: #F0A500;  
+  background-color: #f0a500;
 }
 
 .stadium-book {
@@ -334,4 +334,9 @@ nav * {
 .stadium-book-from {
   display: flex;
   justify-content: space-between;
+}
+
+.users {
+  margin: 6px;
+  /* padding: 6px; */
 }
