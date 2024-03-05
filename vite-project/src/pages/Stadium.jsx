@@ -1,15 +1,14 @@
-import { useState, useEffect } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
-import Client from '../services/api'
+import { useState, useEffect } from "react"
+import { useNavigate, useParams } from "react-router-dom"
+import Client from "../services/api"
 import NewMatchCard from "../components/NewMatchCard"
-import stadiumDefaultImg from "../images/stadiumDefault.jpg";
-import { Carousel } from '../components/Carousel';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import Divider from '@mui/material/Divider';
-import TextField from '@mui/material/TextField';
-
+import stadiumDefaultImg from "../images/stadiumDefault.jpg"
+import { Carousel } from "../components/Carousel"
+import List from "@mui/material/List"
+import ListItem from "@mui/material/ListItem"
+import ListItemText from "@mui/material/ListItemText"
+import Divider from "@mui/material/Divider"
+import TextField from "@mui/material/TextField"
 
 const Stadium = ({ user }) => {
   const navigate = useNavigate()
@@ -18,30 +17,31 @@ const Stadium = ({ user }) => {
   const [bookingTo, setBookingTo] = useState("")
   const [isBooked, setIsBooked] = useState(false)
   let { id } = useParams()
-  const style = { //style for stadium info
+  const style = {
+    //style for stadium info
     py: 0,
-    width: '100%',
+    width: "100%",
     maxWidth: 360,
     borderRadius: 2,
-    border: '1px solid',
-    borderColor: 'divider',
-    backgroundColor: 'background.paper',
-  };
-  const slides = [ //data for carousel test
+    border: "1px solid",
+    borderColor: "divider",
+    backgroundColor: "background.paper",
+  }
+  const slides = [
+    //data for carousel test
     {
       src: stadiumDefaultImg,
-      alt: "Image 1 for carousel"
+      alt: "Image 1 for carousel",
     },
     {
       src: stadiumDefaultImg,
-      alt: "Image 2 for carousel"
+      alt: "Image 2 for carousel",
     },
     {
       src: stadiumDefaultImg,
-      alt: "Image 3 for carousel"
-    }
+      alt: "Image 3 for carousel",
+    },
   ]
-
 
   useEffect(() => {
     Client.get(`/stadiums/${id}`)
@@ -120,92 +120,112 @@ const Stadium = ({ user }) => {
         <div className="stadium-show">
           <div className="stadium-img">
             <Carousel data={slides} />
-            <div className='stadium-info-form-wrap'>
-            <List sx={style}>
-              <ListItem>
-                <ListItemText primary={<h2>{stadiumDetails.name}</h2>} />
-              </ListItem>
-              <Divider component="li" />
-              <ListItem>
-                <ListItemText primary={<h4>{stadiumDetails.sport} Stadium</h4>} />
-              </ListItem>
-              <Divider component="li" />
-              <ListItem>
-                <ListItemText primary={<h4>{stadiumDetails.seats} Available Seats</h4>} />
-              </ListItem>
-              <Divider component="li" />
-              <ListItem>
-                <ListItemText primary={<h4>{stadiumDetails.location}</h4>} />
-              </ListItem>
-              <Divider component="li" />
-              <ListItem>
-                <ListItemText primary={<div className="stadium-edit-btn"><button onClick={handleDelete}>Delete</button><button onClick={handleUpdate}>Update</button></div>} />
-              </ListItem>
-          </List>
-          <div className='stadium-book-form'>
-          <List sx={style}>
-            <ListItem>
-              <ListItemText primary={<h3>Book Stadium</h3>}/>
-            </ListItem>
-            <Divider component="li"/>
-            <ListItem>
-              <ListItemText primary={
-              <form onSubmit={handleBookingSubmit}>
-                
-              <label className='stadium-book-from'>
-                <span>From:</span>
-                {/* <input
+            <div className="stadium-info-form-wrap">
+              <List sx={style}>
+                <ListItem>
+                  <ListItemText primary={<h2>{stadiumDetails.name}</h2>} />
+                </ListItem>
+                <Divider component="li" />
+                <ListItem>
+                  <ListItemText
+                    primary={<h4>{stadiumDetails.sport} Stadium</h4>}
+                  />
+                </ListItem>
+                <Divider component="li" />
+                <ListItem>
+                  <ListItemText
+                    primary={<h4>{stadiumDetails.seats} Available Seats</h4>}
+                  />
+                </ListItem>
+                <Divider component="li" />
+                <ListItem>
+                  <ListItemText primary={<h4>{stadiumDetails.location}</h4>} />
+                </ListItem>
+                <Divider component="li" />
+                <ListItem>
+                  <ListItemText
+                    primary={
+                      <div className="stadium-edit-btn">
+                        <button onClick={handleDelete}>Delete</button>
+                        <button onClick={handleUpdate}>Update</button>
+                      </div>
+                    }
+                  />
+                </ListItem>
+              </List>
+              <div className="stadium-book-form">
+                <List sx={style}>
+                  <ListItem>
+                    <ListItemText primary={<h3>Book Stadium</h3>} />
+                  </ListItem>
+                  <Divider component="li" />
+                  <ListItem>
+                    <ListItemText
+                      primary={
+                        <form onSubmit={handleBookingSubmit}>
+                          <label className="stadium-book-from">
+                            <span>From:</span>
+                            {/* <input
                   type="date"
                   value={bookingFrom}
                   onChange={(e) =>
                   handleBookingDateChange(setBookingFrom, e.target.value)
                   }
                 /> */}
-                <TextField type="date"
-                  value={bookingFrom}
-                  onChange={(e) =>
-                  handleBookingDateChange(setBookingFrom, e.target.value)
-                  }></TextField>
-              </label><br />
-              <label className='stadium-book-from'>
-                <span>To:</span>
-                {/* <input
+                            <TextField
+                              type="date"
+                              value={bookingFrom}
+                              onChange={(e) =>
+                                handleBookingDateChange(
+                                  setBookingFrom,
+                                  e.target.value
+                                )
+                              }
+                            ></TextField>
+                          </label>
+                          <br />
+                          <label className="stadium-book-from">
+                            <span>To:</span>
+                            {/* <input
                   type="date"
                   value={bookingTo}
                   onChange={(e) =>
                     handleBookingDateChange(setBookingTo, e.target.value)
                   }
                 /> */}
-                  <TextField type="date"
-                  value={bookingTo}
-                  onChange={(e) =>
-                    handleBookingDateChange(setBookingTo, e.target.value)
-                  }></TextField>
-              </label><br />
-              <button type="submit" disabled={isBooked}>
-                Book
-              </button>
-            </form>
-          }/>
-            </ListItem>
-          </List>
+                            <TextField
+                              type="date"
+                              value={bookingTo}
+                              onChange={(e) =>
+                                handleBookingDateChange(
+                                  setBookingTo,
+                                  e.target.value
+                                )
+                              }
+                            ></TextField>
+                          </label>
+                          <br />
+                          <button type="submit" disabled={isBooked}>
+                            Book
+                          </button>
+                        </form>
+                      }
+                    />
+                  </ListItem>
+                </List>
+              </div>
+              <div>
+                {isBooked && (
+                  <p>This stadium is already booked for the selected dates.</p>
+                )}
+              </div>
+            </div>
           </div>
-            <div>
-
-            {isBooked && (
-              <p>This stadium is already booked for the selected dates.</p>
-            )}
-          </div>
-          </div>
-
-          </div>
-
-
-
         </div>
       ) : null}
-      NewMatchCard:
-      <NewMatchCard stadium={stadiumDetails} />
+      <div className="match-card-outer">
+        <NewMatchCard stadium={stadiumDetails} />
+      </div>
     </div>
   )
 }

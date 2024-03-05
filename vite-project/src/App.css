@@ -9,10 +9,26 @@
 
 body {
   color: #f0a500;
+  background-color: #f7f4f3;
 }
 
 main {
   margin-top: 45px;
+}
+
+.stadium-caro-match {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.match-card-outer {
+  display: flex;
+  justify-content: center;
+}
+
+.stack-div {
+  width: 80%;
 }
 
 .container-login {
@@ -340,3 +356,4 @@ nav * {
   margin: 6px;
   /* padding: 6px; */
 }
+
