@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
+import React, { useState } from 'react'
+import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from 'react-icons/bs'
 
 export const Carousel = ({ data }) => {
-  const [slide, setSlide] = useState(0);
+  const [slide, setSlide] = useState(0)
 
   const nextSlide = () => {
-    setSlide(slide === data.length - 1 ? 0 : slide + 1);
-  };
+    setSlide(slide === data.length - 1 ? 0 : slide + 1)
+  }
 
   const prevSlide = () => {
-    setSlide(slide === 0 ? data.length - 1 : slide - 1);
-  };
+    setSlide(slide === 0 ? data.length - 1 : slide - 1)
+  }
 
   return (
     <div className="carousel">
@@ -21,9 +21,9 @@ export const Carousel = ({ data }) => {
             src={item.src}
             alt={item.alt}
             key={idx}
-            className={slide === idx ? "slide" : "slide slide-hidden"}
+            className={slide === idx ? 'slide' : 'slide slide-hidden'}
           />
-        );
+        )
       })}
       <BsArrowRightCircleFill
         onClick={nextSlide}
@@ -35,13 +35,13 @@ export const Carousel = ({ data }) => {
             <button
               key={idx}
               className={
-                slide === idx ? "indicator" : "indicator indicator-inactive"
+                slide === idx ? 'indicator' : 'indicator indicator-inactive'
               }
               onClick={() => setSlide(idx)}
             ></button>
-          );
+          )
         })}
       </span>
     </div>
-  );
-};
+  )
+}

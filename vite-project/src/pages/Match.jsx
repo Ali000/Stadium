@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react"
-import { useNavigate, useParams } from "react-router-dom"
-import Client from "../services/api"
+import { useState, useEffect } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
+import Client from '../services/api'
 
 const Match = (props) => {
   const navigate = useNavigate()
@@ -13,7 +13,7 @@ const Match = (props) => {
 
   useEffect(() => {
     const getMatch = async () => {
-      const response = await Client.get("/matches/" + id)
+      const response = await Client.get('/matches/' + id)
       console.log(response.data)
       oldMatchDetails = response.data
       from = new Date(response.data.time.from)
@@ -27,10 +27,10 @@ const Match = (props) => {
   }, [id, props])
 
   const buyticket = async () => {
-    const response = await Client.post("/tickets/", {
+    const response = await Client.post('/tickets/', {
       user: props.user.id,
       match: matchDetails._id,
-      price: matchDetails.price,
+      price: matchDetails.price
     })
     setMatchDetails((prev) => ({ ...prev, seats: prev.seats - 1 }))
     // navigate("/match/" + id)
