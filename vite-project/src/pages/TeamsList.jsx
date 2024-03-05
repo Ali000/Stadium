@@ -1,15 +1,15 @@
-import { useEffect, useRef, useState } from 'react'
-import Client  from '../services/api'
-import Search from '../components/Search'
+import { useEffect, useRef, useState } from "react"
+import Client from "../services/api"
+import Search from "../components/Search"
 import TeamCard from "../components/TeamCard"
-import NewTeamCard from '../components/NewTeamCard'
+import NewTeamCard from "../components/NewTeamCard"
 const TeamsList = () => {
   const searchRef = useRef(null)
   const [searchResults, setSearchResults] = useState([])
   const [teams, setTeams] = useState([])
   const [pressed, setPresssed] = useState(false)
   useEffect(() => {
-    Client.get('/teams')
+    Client.get("/teams")
       .then((response) => {
         setTeams(response.data)
       })
@@ -27,9 +27,10 @@ const TeamsList = () => {
     setPresssed(true)
   }
 
-  return( <div>
+  return (
+    <div>
       <Search onSubmit={handleSubmit} searchRef={searchRef} />
-      <h1>Teams List</h1>
+      <h1 className="pages-title">Teams</h1>
       <div className="container" key={Math.random()}>
         {pressed ? (
           searchResults.length > 0 ? (
@@ -44,9 +45,9 @@ const TeamsList = () => {
             </>
           ))
         )}
-       
       </div>
-<NewTeamCard />
-  </div>)
+      <NewTeamCard />
+    </div>
+  )
 }
 export default TeamsList
