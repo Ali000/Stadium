@@ -8,6 +8,8 @@ import Divider from "@mui/material/Divider"
 import TextField from "@mui/material/TextField"
 import MenuItem from "@mui/material/MenuItem"
 import Stack from "@mui/material/Stack"
+import { styled } from "@mui/material/styles"
+import Paper from "@mui/material/Paper"
 
 const NewMatchCard = (props) => {
   const [teams, setTeams] = useState([])
@@ -15,6 +17,14 @@ const NewMatchCard = (props) => {
   // navigate(`/Match/New`)
   const handleClick = () => {}
   // const handleSubmit = () => {}
+
+  const Item = styled(Paper)(({ theme }) => ({
+    backgroundColor: theme.palette.mode === "dark" ? "#000" : "#000",
+    ...theme.typography.body2,
+    padding: theme.spacing(1),
+    textAlign: "center",
+    color: "#f0a500",
+  }))
 
   const style = {
     //style for stadium info
@@ -83,76 +93,84 @@ const NewMatchCard = (props) => {
   }, [props.stadium])
 
   return (
-    <div>
-      <List sx={style}>
-        <ListItem>
-          <ListItemText
-            primary={
-              <form onSubmit={handleSubmit}>
-                <label htmlFor="from">Name: </label>
-                <TextField
-                  type="text"
-                  id="name"
-                  onChange={handleChange}
-                  placeholder="Name"
-                ></TextField>
-                <label htmlFor="from">from: </label>
-                <TextField
-                  type="date"
-                  id="from"
-                  onChange={handleChange}
-                ></TextField>
-                <label htmlFor="to">To </label>
+    <div className="stack-div">
+      <Stack
+        direction="row"
+        justifyContent="flex-start"
+        alignItems="center"
+        spacing={1}
+        useFlexGap
+        flexWrap="wrap"
+      >
+        <Item>
+          <h2>Create a match</h2>
+          <ListItem>
+            <ListItemText
+              primary={
+                <form onSubmit={handleSubmit}>
+                  <label htmlFor="from">Name: </label>
+                  <TextField
+                    type="text"
+                    id="name"
+                    onChange={handleChange}
+                    placeholder="Name"
+                  ></TextField>
+                  <label htmlFor="from">from: </label>
+                  <TextField
+                    type="date"
+                    id="from"
+                    onChange={handleChange}
+                  ></TextField>
+                  <label htmlFor="to">To </label>
 
-                <TextField
-                  type="date"
-                  id="to"
-                  onChange={handleChange}
-                  label="to"
-                  variant="outlined"
-                ></TextField>
-                <label htmlFor="home">first team:</label>
-                <TextField
-                  helperText="Please select home team"
-                  name="home"
-                  id="name"
-                  select
-                  label="Select"
-                >
-                  {teams.map((team) => (
-                    <MenuItem key={team._id} value={team._id}>
-                      {team.name}
-                    </MenuItem>
-                  ))}
-                </TextField>
-                <label htmlFor="away">second team:</label>
-                <TextField
-                  helperText="Please select away team"
-                  id="away"
-                  select
-                  label="Select"
-                >
-                  {teams.map((team) => (
-                    <MenuItem key={team._id} value={team._id}>
-                      {team.name}
-                    </MenuItem>
-                  ))}
-                </TextField>
-                <label htmlFor="price">Ticket Price:</label>
-                <TextField
-                  type="number"
-                  id="price"
-                  onChange={handleChange}
-                ></TextField>
-                <div>
-                  <button type="submit">Add Match</button>
-                </div>
-              </form>
-            }
-          />
-        </ListItem>
-        <Divider component="li" />
-      </List>
+                  <TextField
+                    type="date"
+                    id="to"
+                    onChange={handleChange}
+                    variant="outlined"
+                  ></TextField>
+                  <label htmlFor="home">first team:</label>
+                  <TextField
+                    helperText="Please select home team"
+                    name="home"
+                    id="name"
+                    select
+                    label="Select"
+                  >
+                    {teams.map((team) => (
+                      <MenuItem key={team._id} value={team._id}>
+                        {team.name}
+                      </MenuItem>
+                    ))}
+                  </TextField>
+                  <label htmlFor="away">second team:</label>
+                  <TextField
+                    helperText="Please select away team"
+                    id="away"
+                    select
+                    label="Select"
+                  >
+                    {teams.map((team) => (
+                      <MenuItem key={team._id} value={team._id}>
+                        {team.name}
+                      </MenuItem>
+                    ))}
+                  </TextField>
+                  <label htmlFor="price">Ticket Price:</label>
+                  <TextField
+                    type="number"
+                    id="price"
+                    onChange={handleChange}
+                  ></TextField>
+                  <div>
+                    <button type="submit">Add Match</button>
+                  </div>
+                </form>
+              }
+            />
+          </ListItem>
+        </Item>
+      </Stack>
     </div>
   )
 }

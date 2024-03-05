@@ -223,7 +223,9 @@ const Stadium = ({ user }) => {
           </div>
         </div>
       ) : null}
-      <NewMatchCard stadium={stadiumDetails} />
+      <div className="match-card-outer">
+        <NewMatchCard stadium={stadiumDetails} />
+      </div>
     </div>
   )
 }
