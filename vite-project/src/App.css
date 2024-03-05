@@ -6,6 +6,15 @@
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
+
+body {
+  color: #F0A500;
+}
+
+main {
+  margin-top: 45px;
+}
+
 .container-login {
   height: 100vh;
   width: 100%;
@@ -41,9 +50,9 @@ header {
   color: #232836;
   text-align: center;
 }
-form {
+/* form {
   margin-top: 30px;
-}
+} */
 .form .field {
   position: relative;
   height: 50px;
@@ -170,4 +179,159 @@ a.google span {
 }
 nav * {
   margin-right: 20px;
+}
+.nav-bar {
+  position: fixed;
+  top: 0;
+  background-color: #fff;
+  border: 1px solid black;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 25px;
+  z-index: 1;
+}
+
+.Login {
+  display: flex;
+  align-items: center;
+}
+.Login * {
+  font-size: 30px;
+}
+.Stadiums-List-Page {
+  margin-top: 50px;
+}
+.HomePage {
+  margin-top: 50px;
+}
+.stadium-card-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.stadium-card-single {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.anchor-no-line {
+  text-decoration: none;
+}
+
+.black-bg {
+  background-color: #000000;
+}
+
+.black-font {
+  color: #000000;
+}
+
+.gold-font {
+  color: #F0A500;
+}
+
+.gold-bg {
+  background-color: #F0A500;  
+}
+
+.stadium-book {
+  display: flex;
+}
+
+.stadium-img {
+  display: flex;
+  justify-content: space-around;
+}
+
+.stadium-edit-btn {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* .stadium-img img {
+  width: 60%;
+  border-radius: 30px;
+} */
+
+.stadium-show {
+  padding: 30px;
+}
+
+.carousel {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  height: 400px;
+}
+
+.slide {
+  border-radius: 0.5rem;
+  box-shadow: 0px 0px 7px #666;
+  width: 100%;
+  height: 100%;
+}
+
+.slide-hidden {
+  display: none;
+}
+
+.arrow {
+  position: absolute;
+  filter: drop-shadow(0px 0px 5px #555);
+  width: 2rem;
+  height: 2rem;
+  color: white;
+}
+
+.arrow:hover {
+  cursor: pointer;
+}
+
+.arrow-left {
+  left: 1rem;
+}
+
+.arrow-right {
+  right: 1rem;
+}
+
+.indicators {
+  display: flex;
+  position: absolute;
+  bottom: 1rem;
+}
+
+.indicator {
+  background-color: white;
+  height: 0.5rem;
+  width: 0.5rem;
+  border-radius: 100%;
+  border: none;
+  outline: none;
+  box-shadow: 0px 0px 5px #555;
+  margin: 0 0.2rem;
+  cursor: pointer;
+}
+
+.indicator-inactive {
+  background-color: grey;
+}
+
+.stadium-book-form {
+  margin-top: 30px;
+}
+
+.stadium-info-form-wrap {
+  width: 30%;
+}
+
+.stadium-book-from {
+  display: flex;
+  justify-content: space-between;
 }
