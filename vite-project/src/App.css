@@ -351,3 +351,9 @@ nav * {
   display: flex;
   justify-content: space-between;
 }
+
+.users {
+  margin: 6px;
+  /* padding: 6px; */
+}
+
