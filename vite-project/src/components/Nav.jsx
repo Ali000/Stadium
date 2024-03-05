@@ -1,8 +1,5 @@
-import { Link } from 'react-router-dom'
-const Nav = ({user, logOut}) => {
-
-
-
+import { Link } from "react-router-dom"
+const Nav = ({ user, logOut }) => {
   return (
     <div>
       <nav className="nav-bar">
@@ -11,9 +8,11 @@ const Nav = ({user, logOut}) => {
         <Link to="/StadiumsList">StadiumsList</Link>
         <Link to="/About">About</Link>
         <Link to="/TeamsList">TeamsList</Link>
-        {
-          user ? <Link onClick={logOut}>Logout</Link> : <Link to="/Login">Login</Link>
-        }
+        {user ? (
+          <Link onClick={logOut}>Logout</Link>
+        ) : (
+          <Link to="/Login">Login</Link>
+        )}
       </nav>
     </div>
   )
