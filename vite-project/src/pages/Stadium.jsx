@@ -223,7 +223,6 @@ const Stadium = ({ user }) => {
           </div>
         </div>
       ) : null}
-      NewMatchCard:
       <NewMatchCard stadium={stadiumDetails} />
     </div>
   )

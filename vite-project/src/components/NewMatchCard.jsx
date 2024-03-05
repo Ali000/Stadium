@@ -7,6 +7,7 @@ import ListItemText from "@mui/material/ListItemText"
 import Divider from "@mui/material/Divider"
 import TextField from "@mui/material/TextField"
 import MenuItem from "@mui/material/MenuItem"
+import Stack from "@mui/material/Stack"
 
 const NewMatchCard = (props) => {
   const [teams, setTeams] = useState([])
@@ -111,7 +112,6 @@ const NewMatchCard = (props) => {
                   variant="outlined"
                 ></TextField>
                 <label htmlFor="home">first team:</label>
-                <br />
                 <TextField
                   helperText="Please select home team"
                   name="home"
@@ -126,7 +126,6 @@ const NewMatchCard = (props) => {
                   ))}
                 </TextField>
                 <label htmlFor="away">second team:</label>
-                <br />
                 <TextField
                   helperText="Please select away team"
                   id="away"
@@ -139,7 +138,6 @@ const NewMatchCard = (props) => {
                     </MenuItem>
                   ))}
                 </TextField>
-                <br />
                 <label htmlFor="price">Ticket Price:</label>
                 <TextField
                   type="number"
