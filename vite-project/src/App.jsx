@@ -17,6 +17,8 @@ import Stadium from './pages/Stadium'
 import StadiumUpdate from './pages/StadiumUpdate'
 import AddStadium from './pages/AddStadium'
 import { createTheme, ThemeProvider } from '@mui/material'
+import NewMatchCard from './components/NewMatchCard'
+import Match from "./pages/Match"
 const App = () => {
   const [user, setUser] = useState(null)
 
