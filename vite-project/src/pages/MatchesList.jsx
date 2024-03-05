@@ -1,15 +1,15 @@
-import { useEffect, useRef, useState } from "react"
-import Client from "../services/api"
-import Search from "../components/Search"
-import MatchCard from "../components/MatchCard"
-import NewMatchCard from "../components/NewMatchCard"
+import { useEffect, useRef, useState } from 'react'
+import Client from '../services/api'
+import Search from '../components/Search'
+import MatchCard from '../components/MatchCard'
+import NewMatchCard from '../components/NewMatchCard'
 const MatchesList = () => {
   const searchRef = useRef(null)
   const [searchResults, setSearchResults] = useState([])
   const [matches, setMatches] = useState([])
   const [pressed, setPresssed] = useState(false)
   useEffect(() => {
-    Client.get("/matches")
+    Client.get('/matches')
       .then((response) => {
         setMatches(response.data)
       })
@@ -40,11 +40,7 @@ const MatchesList = () => {
             <h2>No Matches Found</h2>
           )
         ) : (
-          matches.map((match) => (
-            <>
-              <MatchCard key={match._id} match={match} />
-            </>
-          ))
+          matches.map((match) => <MatchCard key={match._id} match={match} />)
         )}
       </div>
     </div>
