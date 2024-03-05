@@ -16,8 +16,15 @@ import AddTeam from './pages/AddTeam'
 import Stadium from './pages/Stadium'
 import StadiumUpdate from './pages/StadiumUpdate'
 import AddStadium from './pages/AddStadium'
+import { createTheme, ThemeProvider } from '@mui/material'
 const App = () => {
   const [user, setUser] = useState(null)
+
+  const theme = createTheme({
+    palette: {
+      mode: "dark"
+    }
+  })
 
   useEffect(() => {
     const token = localStorage.getItem("token")
@@ -40,6 +47,7 @@ const App = () => {
   }
 
   return (
+    <ThemeProvider theme={theme}>
     <div>
       <header>
         <Nav user={user} logOut={handleLogOut} />
@@ -62,6 +70,7 @@ const App = () => {
         </Routes>
       </main>
     </div>
+    </ThemeProvider>
   )
 }
 export default App
