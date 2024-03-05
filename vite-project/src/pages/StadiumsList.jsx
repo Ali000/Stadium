@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
-import Client from '../services/api'
-import Search from '../components/Search'
-import StadiumCard from '../components/StadiumCard'
-import NewStadiumCard from '../components/NewStadiumCard'
+import { useEffect, useRef, useState } from "react"
+import { Link } from "react-router-dom"
+import Client from "../services/api"
+import Search from "../components/Search"
+import StadiumCard from "../components/StadiumCard"
+import NewStadiumCard from "../components/NewStadiumCard"
 const StadiumsList = () => {
   const searchRef = useRef(null)
   const [searchResults, setSearchResults] = useState([])
@@ -29,9 +29,9 @@ const StadiumsList = () => {
   }
 
   return (
-    <div className='Stadiums-List-Page'>
+    <div className="Stadiums-List-Page">
       <Search onSubmit={handleSubmit} searchRef={searchRef} />
-      <h1>Stadiums List</h1>
+      <h1 className="pages-title">Stadiums List</h1>
       <div className="container stadium-card-wrap">
         {pressed ? (
           searchResults.length > 0 ? (
@@ -43,8 +43,10 @@ const StadiumsList = () => {
           )
         ) : (
           stadiums.map((stadium) => (
-            <div className="stadium-card-single"  key={stadium._id}>
-              <Link className='anchor-no-line' to={"/Stadium/" + stadium._id}><StadiumCard key={stadium._id} stadium={stadium} /></Link>
+            <div className="stadium-card-single" key={stadium._id}>
+              <Link className="anchor-no-line" to={"/Stadium/" + stadium._id}>
+                <StadiumCard key={stadium._id} stadium={stadium} />
+              </Link>
             </div>
           ))
         )}
