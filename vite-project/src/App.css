@@ -173,6 +173,7 @@ nav * {
 }
 .nav-bar {
   position: fixed;
+  z-index: 50;
   top: 0;
   background-color: #fff;
   border: 1px solid black;
@@ -219,7 +220,7 @@ nav * {
   z-index: 10;
   color: rgb(166, 129, 8);
   left: 50%;
-  top: 110%;
+  top: 130%;
   transform: translate(-50%, -50%);
 }
 
