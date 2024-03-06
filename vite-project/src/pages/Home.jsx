@@ -1,13 +1,11 @@
 import { useEffect } from 'react'
 import Client from '../services/api'
-import Button from '@mui/material/Button'
 import video from '../videoplayback.webm'
-import MatchCard from '../components/MatchCard'
 import InfoSharpIcon from '@mui/icons-material/InfoSharp'
-import InstagramIcon from '@mui/icons-material/Instagram'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import LoginIcon from '@mui/icons-material/Login'
 import { useState } from 'react'
+import { Card, Grid, Typography, CardContent } from '@mui/material';
 const Home = () => {
   const [matches, setMatches] = useState([])
   useEffect(() => {
@@ -19,6 +17,8 @@ const Home = () => {
         console.log(error)
       })
   }, [])
+
+
   return (
     <div className="HomePage">
       <video
@@ -32,12 +32,28 @@ const Home = () => {
         <source src={video} type="video/webm" />
       </video>
       <div className="Home-box">
-        <h1 className="Home-title">Welcome To Stadium App!</h1>
+      <h1 className="Home-title">Welcome To Stadium App!</h1>
       </div>
-      <h1 className="Home-moto">
-      Your Gateway to the Greatest Games.
-      </h1>
-      <h1> Some of the Matches:</h1>
+      <Typography variant="h4" className="Home-moto" gutterBottom>
+        Your Gateway to the Greatest Games.
+      </Typography>
+      <Typography variant="h5" gutterBottom>
+        Some of the Matches:
+      </Typography>
+      <Grid container spacing={2} justifyContent="center">
+        {matches.map((match) => (
+          <Grid item xs={12} sm={6} md={4} lg={3} key={match._id}>
+            <Card sx={{ bgcolor: '#000', color: '#f0a500' }}>
+              <CardContent>
+                <Typography variant="h6">{match.name}</Typography>
+                <Typography>{new Date(match.time).toLocaleString()}</Typography>
+                <Typography>Price: ${match.price}</Typography>
+                <Typography>Seats available: {match.seats}</Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
       <footer
         style={{
           backgroundColor: '#000',
