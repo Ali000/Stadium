@@ -1,47 +1,47 @@
-import { useState, useEffect } from "react"
-import { useNavigate, useParams } from "react-router-dom"
-import Client from "../services/api"
-import NewMatchCard from "../components/NewMatchCard"
-import stadiumDefaultImg from "../images/stadiumDefault.jpg"
-import { Carousel } from "../components/Carousel"
-import List from "@mui/material/List"
-import ListItem from "@mui/material/ListItem"
-import ListItemText from "@mui/material/ListItemText"
-import Divider from "@mui/material/Divider"
-import TextField from "@mui/material/TextField"
-import Button from "@mui/material/Button"
+import { useState, useEffect } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
+import Client from '../services/api'
+import NewMatchCard from '../components/NewMatchCard'
+import stadiumDefaultImg from '../images/stadiumDefault.jpg'
+import { Carousel } from '../components/Carousel'
+import List from '@mui/material/List'
+import ListItem from '@mui/material/ListItem'
+import ListItemText from '@mui/material/ListItemText'
+import Divider from '@mui/material/Divider'
+import TextField from '@mui/material/TextField'
+import Button from '@mui/material/Button'
 
 const Stadium = ({ user }) => {
   const navigate = useNavigate()
   const [stadiumDetails, setStadiumDetails] = useState({})
-  const [bookingFrom, setBookingFrom] = useState("")
-  const [bookingTo, setBookingTo] = useState("")
+  const [bookingFrom, setBookingFrom] = useState('')
+  const [bookingTo, setBookingTo] = useState('')
   const [isBooked, setIsBooked] = useState(false)
   let { id } = useParams()
   const style = {
     //style for stadium info
     py: 0,
-    width: "100%",
+    width: '100%',
     maxWidth: 360,
     borderRadius: 2,
-    border: "1px solid",
-    borderColor: "divider",
-    backgroundColor: "background.paper",
+    border: '1px solid',
+    borderColor: 'divider',
+    backgroundColor: 'background.paper'
   }
   const slides = [
     //data for carousel test
     {
       src: stadiumDefaultImg,
-      alt: "Image 1 for carousel",
+      alt: 'Image 1 for carousel'
     },
     {
       src: stadiumDefaultImg,
-      alt: "Image 2 for carousel",
+      alt: 'Image 2 for carousel'
     },
     {
       src: stadiumDefaultImg,
-      alt: "Image 3 for carousel",
-    },
+      alt: 'Image 3 for carousel'
+    }
   ]
 
   useEffect(() => {
@@ -77,7 +77,7 @@ const Stadium = ({ user }) => {
 
   const handleDelete = () => {
     Client.delete(`/stadiums/${id}`).then(() => {
-      navigate("/StadiumsList")
+      navigate('/StadiumsList')
     })
   }
 
@@ -89,7 +89,7 @@ const Stadium = ({ user }) => {
     e.preventDefault()
 
     if (isBooked) {
-      alert("The stadium is already booked for the selected dates.")
+      alert('The stadium is already booked for the selected dates.')
       return
     }
 
@@ -97,18 +97,19 @@ const Stadium = ({ user }) => {
       ...stadiumDetails,
       bookings: [
         ...(stadiumDetails.bookings || []),
-        { from: new Date(bookingFrom), to: new Date(bookingTo) },
-      ],
+        { from: new Date(bookingFrom), to: new Date(bookingTo) }
+      ]
     }
 
     Client.put(`/stadiums/${id}`, {
       stadium: updatedStadiumDetails,
-      user: user,
+      user: user
     })
       .then((response) => {
-        console.log("Booking successful:", response.data)
+        console.log('Booking successful:', response.data)
         setStadiumDetails(response.data)
-        alert("Booking successful!")
+        alert('Booking successful!')
+        setStadiumDetails(stadiumDetails)
       })
       .catch((error) => {
         console.log(error)
