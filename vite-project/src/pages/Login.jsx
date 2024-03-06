@@ -29,7 +29,8 @@ const Login = (props) => {
       })
       // console.log(payload)
       // props.setUser(payload)
-      navigate("/Login")
+      // navigate("/Login")
+      setFlipped(!flipped)
     } else {
       const payload = await SignIn({
         email: loginEmail.current.value,
