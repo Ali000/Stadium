@@ -104,36 +104,41 @@ const Profile = ({ userId }) => {
         </List>
 
         {userData.role === "customer" && (
-          // {userData.role === "Admin" && (
+          // {/* {userData.role === "Admin" && ( */}
           <div>
             <h3 className="pages-title">My Tickets</h3>
-            <TableContainer component={Paper}>
-              <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Match</TableCell>
-                    <TableCell>Price</TableCell>
-                    <TableCell>Role</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {userData.tickets.map((ticket) => (
-                    <TableRow
-                      key={ticket._id}
-                      sx={{
-                        "&:last-child td, &:last-child th": { border: 0 },
-                      }}
-                    >
-                      <TableCell component="th" scope="row">
-                        {ticket.match.name}
-                      </TableCell>
-                      <TableCell>{ticket.price}</TableCell>
-                      <TableCell>{ticket.match.time}</TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
+
+            <div className="user-list-wrap">
+              <div className="user-list-wrap">
+                <TableContainer component={Paper}>
+                  <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                    <TableHead>
+                      <TableRow>
+                        <TableCell>Match</TableCell>
+                        <TableCell>Price</TableCell>
+                        <TableCell>Role</TableCell>
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {userData.tickets.map((ticket) => (
+                        <TableRow
+                          key={ticket._id}
+                          sx={{
+                            "&:last-child td, &:last-child th": { border: 0 },
+                          }}
+                        >
+                          <TableCell component="th" scope="row">
+                            {ticket.match.name}
+                          </TableCell>
+                          <TableCell>{ticket.price}</TableCell>
+                          <TableCell>{ticket.match.time}</TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </TableContainer>
+              </div>
+            </div>
           </div>
           // <div>
           //   <h3>My Tickets</h3>
@@ -146,36 +151,39 @@ const Profile = ({ userId }) => {
           // </div>
         )}
 
-        {/* {userData.role === "enterprise" && ( */}
-        {userData.role === "Admin" && (
+        {userData.role === "enterprise" && (
+          // {userData.role === "Admin" && (
           <div>
             <h3 className="pages-title">My Stadiums</h3>
-            <TableContainer component={Paper}>
-              <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Stadium Name</TableCell>
-                    <TableCell>Stadium Location</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {userData.stadiums.map((stadium) => (
-                    <TableRow
-                      key={stadium._id}
-                      sx={{
-                        "&:last-child td, &:last-child th": { border: 0 },
-                      }}
-                    >
-                      <TableCell component="th" scope="row">
-                        {stadium.name}
-                      </TableCell>
-                      <TableCell>{stadium.location}</TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
-            {/* <h3>My Stadiums</h3>
+            <div className="user-list-wrap">
+              <div className="user-list-wrap">
+                <TableContainer component={Paper}>
+                  <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                    <TableHead>
+                      <TableRow>
+                        <TableCell>Stadium Name</TableCell>
+                        <TableCell>Stadium Location</TableCell>
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {userData.stadiums.map((stadium) => (
+                        <TableRow
+                          key={stadium._id}
+                          sx={{
+                            "&:last-child td, &:last-child th": { border: 0 },
+                          }}
+                        >
+                          <TableCell component="th" scope="row">
+                            {stadium.name}
+                          </TableCell>
+                          <TableCell>{stadium.location}</TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </TableContainer>
+              </div>
+              {/* <h3>My Stadiums</h3>
             {console.log(userData)}
             {userData.stadiums.map((stadium, index) => (
               <div key={index}>
@@ -183,6 +191,7 @@ const Profile = ({ userId }) => {
                 <p>Location: {stadium.location}</p>
               </div>
             ))} */}
+            </div>
           </div>
         )}
         {userData.role === "Admin" && (
