@@ -7,7 +7,7 @@ import Button from "@mui/material/Button"
 import Typography from "@mui/material/Typography"
 import teamDefaultImg from "../images/teamDefault.jpg"
 
-const TeamCard = ({ team }) => {
+const TeamCard = ({ team, user }) => {
   const navigate = useNavigate()
   const handleClick = () => {
     navigate(`/Team/${team._id}`)
@@ -25,9 +25,11 @@ const TeamCard = ({ team }) => {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button color="error" variant="outlined" size="small">
-            Delete
-          </Button>
+          {user?.role == "Admin" ? (
+            <Button color="error" variant="outlined" size="small">
+              Delete
+            </Button>
+          ) : null}
         </CardActions>
       </Card>
     </div>

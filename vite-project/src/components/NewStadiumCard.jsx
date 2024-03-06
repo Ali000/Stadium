@@ -8,7 +8,7 @@ import Button from "@mui/material/Button"
 import Typography from "@mui/material/Typography"
 import AddStadium from "../pages/AddStadium"
 
-const NewStadiumCard = () => {
+const NewStadiumCard = (props) => {
   const navigate = useNavigate()
   const handleClick = () => {
     navigate(`/Stadium/New`)
@@ -34,32 +34,40 @@ const NewStadiumCard = () => {
 
   return (
     <div>
-      <Button variant="outlined" color="success" onClick={handleOpen}>
-        Add Stadium
-      </Button>
-      <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
-        open={open}
-        onClose={handleClose}
-        closeAfterTransition
-        slots={{ backdrop: Backdrop }}
-        slotProps={{
-          backdrop: {
-            timeout: 500,
-          },
-        }}
-      >
-        <Fade in={open}>
-          <Box sx={style}>
-            <Typography id="transition-modal-title" variant="h6" component="h2">
-              Add Stadium
-            </Typography>
-            <br />
-            <AddStadium />
-          </Box>
-        </Fade>
-      </Modal>
+      {props?.user?.role == "Admin" ? (
+        <>
+          <Button variant="outlined" color="success" onClick={handleOpen}>
+            Add Stadium
+          </Button>
+          <Modal
+            aria-labelledby="transition-modal-title"
+            aria-describedby="transition-modal-description"
+            open={open}
+            onClose={handleClose}
+            closeAfterTransition
+            slots={{ backdrop: Backdrop }}
+            slotProps={{
+              backdrop: {
+                timeout: 500,
+              },
+            }}
+          >
+            <Fade in={open}>
+              <Box sx={style}>
+                <Typography
+                  id="transition-modal-title"
+                  variant="h6"
+                  component="h2"
+                >
+                  Add Stadium
+                </Typography>
+                <br />
+                <AddStadium />
+              </Box>
+            </Fade>
+          </Modal>
+        </>
+      ) : null}
     </div>
   )
 }
