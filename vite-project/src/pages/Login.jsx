@@ -64,10 +64,7 @@ const Login = (props) => {
               alt=""
             />
             <div className="text">
-              <span className="text-1">
-                The perfect website for
-                <br /> sports entertainment
-              </span>
+              <span className="text-1">Stadium for Sports Entertainment</span>
               <span className="text-2">Let's get connected</span>
             </div>
           </div>
@@ -109,9 +106,9 @@ const Login = (props) => {
                       required
                     />
                   </div>
-                  <div className="text">
+                  {/* <div className="text">
                     <a href="/about">Forgot password?</a>
-                  </div>
+                  </div> */}
                   <div className="button input-box">
                     <input type="submit" value="Submit" />
                   </div>

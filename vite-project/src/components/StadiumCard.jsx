@@ -15,7 +15,11 @@ const StadiumCard = ({ stadium }) => {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardActionArea>
-        <CardMedia component="img" height="250" image={stadium.images[0]} />
+        {stadium.images ? (
+          <CardMedia component="img" height="250" image={stadium.images[0]} />
+        ) : (
+          <CardMedia component="img" height="250" image={stadiumDefaultImg} />
+        )}
         <CardContent sx={{ bgcolor: "black", color: "gold" }}>
           <Typography gutterBottom variant="h5" component="div">
             {stadium.name}
