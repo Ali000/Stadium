@@ -17,6 +17,8 @@ const Stadium = ({ user }) => {
   const [bookingFrom, setBookingFrom] = useState('')
   const [bookingTo, setBookingTo] = useState('')
   const [isBooked, setIsBooked] = useState(false)
+  const [userDetails, setUserDetails] = useState({})
+
   let { id } = useParams()
   const style = {
     //style for stadium info
@@ -53,7 +55,14 @@ const Stadium = ({ user }) => {
       .catch((error) => {
         console.log(error)
       })
-  }, [id, bookingFrom, bookingTo])
+    const getUserDetails = async () => {
+      const res = await Client.get(`/users/${user?.id}`)
+      console.log(res.data)
+      setUserDetails(res.data)
+    }
+    getUserDetails()
+    // console.log(userDetails)
+  }, [id, bookingFrom, bookingTo, isBooked])
 
   const checkIfBooked = (bookings, from, to) => {
     if (!from || !to) return
@@ -106,10 +115,12 @@ const Stadium = ({ user }) => {
       user: user
     })
       .then((response) => {
-        console.log('Booking successful:', response.data)
-        setStadiumDetails(response.data)
-        alert('Booking successful!')
+        console.log("Booking successful:", response.data)
+        // setStadiumDetails(response.data)
+        alert("Booking successful!")
+        setBookingFrom(bookingFrom)
         setStadiumDetails(stadiumDetails)
+        setIsBooked(true)
       })
       .catch((error) => {
         console.log(error)
@@ -144,28 +155,30 @@ const Stadium = ({ user }) => {
                   <ListItemText primary={<h4>{stadiumDetails.location}</h4>} />
                 </ListItem>
                 <Divider component="li" />
-                <ListItem>
-                  <ListItemText
-                    primary={
-                      <div className="stadium-edit-btn">
-                        <Button
-                          variant="outlined"
-                          color="success"
-                          onClick={handleDelete}
-                        >
-                          Delete
-                        </Button>
-                        <Button
-                          variant="outlined"
-                          color="success"
-                          onClick={handleUpdate}
-                        >
-                          Update
-                        </Button>
-                      </div>
-                    }
-                  />
-                </ListItem>
+                {user?.role == "Admin" ? (
+                  <ListItem>
+                    <ListItemText
+                      primary={
+                        <div className="stadium-edit-btn">
+                          <Button
+                            variant="outlined"
+                            color="success"
+                            onClick={handleDelete}
+                          >
+                            Delete
+                          </Button>
+                          <Button
+                            variant="outlined"
+                            color="success"
+                            onClick={handleUpdate}
+                          >
+                            Update
+                          </Button>
+                        </div>
+                      }
+                    />
+                  </ListItem>
+                ) : null}
               </List>
               <div className="stadium-book-form">
                 <List sx={style}>
@@ -243,9 +256,12 @@ const Stadium = ({ user }) => {
           </div>
         </div>
       ) : null}
-      <div className="match-card-outer">
-        <NewMatchCard stadium={stadiumDetails} user={user} />
-      </div>
+      {(user?.role == "enterprise" || user?.role == "Admin") &&
+      userDetails?.stadiums?.some((stadium) => stadium._id == id) ? (
+        <div className="match-card-outer">
+          <NewMatchCard stadium={stadiumDetails} user={user} />
+        </div>
+      ) : null}
     </div>
   )
 }
