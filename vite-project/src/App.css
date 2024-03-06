@@ -320,7 +320,7 @@ nav * {
 .Home-moto {
   position: absolute;
   z-index: 0;
-  color: rgb(166, 129, 8);
+  color:#f0a500;
   left: 50%;
   top: 130%;
   transform: translate(-50%, -50%);
@@ -329,16 +329,16 @@ nav * {
 .Home-box {
   position: absolute;
   z-index: 0;
-  left: 14%;
-  top: 30%;
+  left: 17%;
+  top: 20%;
   transform: translate(-50%, -50%);
   height: 150px;
-  width: 450px;
-  opacity: 0.8;
+  width: 550px;
+  /* opacity: 0;
   background-color: rgb(166, 129, 8);
   border: 1px solid rgb(166, 129, 8);
   border-top-right-radius: 50px;
-  border-bottom-right-radius: 50px;
+  border-bottom-right-radius: 50px; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -346,7 +346,8 @@ nav * {
 
 .Home-title {
   margin: 0;
-  color: white;
+  color:#f0a500;
+  opacity: 1;
 }
 .matches-container {
   display: flex;
