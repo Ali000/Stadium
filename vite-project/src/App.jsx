@@ -57,6 +57,7 @@ const App = () => {
         </header>
         <main>
           <Routes>
+            <Route path="/" element={<Home />} />
             <Route path="/Home" element={<Home />} />
             <Route path="/MatchesList" element={<MatchesList />} />
             <Route path="/StadiumsList" element={<StadiumsList />} />
