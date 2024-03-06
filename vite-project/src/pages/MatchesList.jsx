@@ -60,7 +60,7 @@ const MatchesList = (props) => {
   return (
     <div>
       {/* <Search onSubmit={handleSubmit} searchRef={searchRef} /> */}
-      <h1 className="pages-title">Matches List</h1>
+      <h1 className="pages-title">Matches</h1>
       <div className="" key={Math.random()}>
         {pressed ? (
           searchResults.length > 0 ? (
@@ -93,8 +93,6 @@ const MatchesList = (props) => {
                     match={match}
                     id={match._id}
                   />
-
-                  // <MatchCard user={props.user} key={match._id} match={match} />
                 ))}
               </TableBody>
             </Table>

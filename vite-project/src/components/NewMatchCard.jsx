@@ -176,7 +176,6 @@ const NewMatchCard = (props) => {
                     id="price"
                     name="price"
                     placeholder="Price"
-                    inputProps={{ inputMode: "numeric", pattern: "[0-9]*" }}
                     onChange={handleChange}
                   ></TextField>
                   <div>
