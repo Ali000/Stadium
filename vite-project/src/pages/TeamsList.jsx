@@ -3,7 +3,7 @@ import Client from "../services/api"
 import Search from "../components/Search"
 import TeamCard from "../components/TeamCard"
 import NewTeamCard from "../components/NewTeamCard"
-const TeamsList = () => {
+const TeamsList = ({ user }) => {
   const searchRef = useRef(null)
   const [searchResults, setSearchResults] = useState([])
   const [teams, setTeams] = useState([])
@@ -41,7 +41,7 @@ const TeamsList = () => {
         ) : (
           teams.map((team) => (
             <>
-              <TeamCard key={team._id} team={team} />
+              <TeamCard key={team._id} team={team} user={user} />
             </>
           ))
         )}
