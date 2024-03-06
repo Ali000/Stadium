@@ -9,6 +9,15 @@ main {
   margin-top: 45px;
 }
 
+.user-list-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.user-profile-info {
+  margin: 30px;
+}
+
 .add-stadium-form-modal {
   display: flex;
   flex-direction: column;
