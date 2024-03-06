@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import React from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import Client from "../services/api"
 import NewMatchCard from "../components/NewMatchCard"
@@ -10,6 +11,9 @@ import ListItemText from "@mui/material/ListItemText"
 import Divider from "@mui/material/Divider"
 import TextField from "@mui/material/TextField"
 import Button from "@mui/material/Button"
+import Snackbar from "@mui/material/Snackbar"
+import Alert from "@mui/material/Alert"
+
 
 const Stadium = ({ user }) => {
   const navigate = useNavigate()
@@ -18,7 +22,9 @@ const Stadium = ({ user }) => {
   const [bookingTo, setBookingTo] = useState("")
   const [isBooked, setIsBooked] = useState(false)
   const [userDetails, setUserDetails] = useState({})
+  const [open, setOpen] = React.useState(false)
   const [slides, setSlides] = useState([])
+
 
   let { id } = useParams()
   const style = {
@@ -128,7 +134,7 @@ const Stadium = ({ user }) => {
       .then((response) => {
         console.log("Booking successful:", response.data)
         // setStadiumDetails(response.data)
-        alert("Booking successful!")
+        // alert("Booking successful!")
         setBookingFrom(bookingFrom)
         setStadiumDetails(stadiumDetails)
         setIsBooked(true)
@@ -136,10 +142,29 @@ const Stadium = ({ user }) => {
       .catch((error) => {
         console.log(error)
       })
+    setOpen(true)
+  }
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return
+    }
+
+    setOpen(false)
   }
 
   return (
     <div>
+      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+        <Alert
+          onClose={handleClose}
+          severity="success"
+          variant="filled"
+          sx={{ width: "100%" }}
+        >
+          Stadium has been booked!
+        </Alert>
+      </Snackbar>
       {stadiumDetails ? (
         <div className="stadium-show">
           <div className="stadium-img">

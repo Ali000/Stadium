@@ -175,6 +175,7 @@ const NewMatchCard = (props) => {
                     type="number"
                     id="price"
                     name="price"
+                    placeholder="Price"
                     onChange={handleChange}
                   ></TextField>
                   <div>
