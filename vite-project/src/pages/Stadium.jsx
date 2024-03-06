@@ -14,6 +14,7 @@ import Button from "@mui/material/Button"
 import Snackbar from "@mui/material/Snackbar"
 import Alert from "@mui/material/Alert"
 
+
 const Stadium = ({ user }) => {
   const navigate = useNavigate()
   const [stadiumDetails, setStadiumDetails] = useState({})
@@ -22,6 +23,8 @@ const Stadium = ({ user }) => {
   const [isBooked, setIsBooked] = useState(false)
   const [userDetails, setUserDetails] = useState({})
   const [open, setOpen] = React.useState(false)
+  const [slides, setSlides] = useState([])
+
 
   let { id } = useParams()
   const style = {
@@ -34,26 +37,34 @@ const Stadium = ({ user }) => {
     borderColor: "divider",
     backgroundColor: "background.paper",
   }
-  const slides = [
-    //data for carousel test
-    {
-      src: stadiumDefaultImg,
-      alt: "Image 1 for carousel",
-    },
-    {
-      src: stadiumDefaultImg,
-      alt: "Image 2 for carousel",
-    },
-    {
-      src: stadiumDefaultImg,
-      alt: "Image 3 for carousel",
-    },
-  ]
+  // const slides = [
+  //   //data for carousel test
+  //   {
+  //     src: stadiumDefaultImg,
+  //     alt: 'Image 1 for carousel'
+  //   },
+  //   {
+  //     src: stadiumDefaultImg,
+  //     alt: 'Image 2 for carousel'
+  //   },
+  //   {
+  //     src: stadiumDefaultImg,
+  //     alt: 'Image 3 for carousel'
+  //   }
+  // ]
 
   useEffect(() => {
     Client.get(`/stadiums/${id}`)
       .then((response) => {
         setStadiumDetails(response.data)
+
+        const images = response.data.images.map((image) => ({
+          src: image,
+          alt: "image",
+        }))
+        setSlides(images)
+        console.log(images)
+
         checkIfBooked(response.data.bookings, bookingFrom, bookingTo)
       })
       .catch((error) => {
@@ -63,6 +74,8 @@ const Stadium = ({ user }) => {
       const res = await Client.get(`/users/${user?.id}`)
       console.log(res.data)
       setUserDetails(res.data)
+
+      // (imasetSlidesges)
     }
     getUserDetails()
     // console.log(userDetails)

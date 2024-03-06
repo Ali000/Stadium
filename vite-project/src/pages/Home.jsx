@@ -6,6 +6,7 @@ import GitHubIcon from "@mui/icons-material/GitHub"
 import LoginIcon from "@mui/icons-material/Login"
 import { useState } from "react"
 import { Card, Grid, Typography, CardContent } from "@mui/material"
+
 const Home = () => {
   const [matches, setMatches] = useState([])
   useEffect(() => {
@@ -31,7 +32,7 @@ const Home = () => {
         <source src={video} type="video/webm" />
       </video>
       <div className="Home-box">
-        <h1 className="Home-title">Welcome To Stadium App!</h1>
+        <h1 className="Home-title">Welcome To The Stadium App!</h1>
       </div>
       <Typography variant="h4" className="Home-moto" gutterBottom>
         Your Gateway to the Greatest Games.
@@ -39,6 +40,7 @@ const Home = () => {
       {/* <Typography variant="h5" gutterBottom>
         Some of the Matches:
       </Typography> */}
+
       <Grid container spacing={2} justifyContent="center">
         {matches.map((match) => (
           <Grid item xs={12} sm={6} md={4} lg={3} key={match._id}>
