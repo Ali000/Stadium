@@ -5,7 +5,7 @@ import InfoSharpIcon from '@mui/icons-material/InfoSharp'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import LoginIcon from '@mui/icons-material/Login'
 import { useState } from 'react'
-import { Card, Grid, Typography, CardContent } from '@mui/material';
+import { Card, Grid, Typography, CardContent } from '@mui/material'
 const Home = () => {
   const [matches, setMatches] = useState([])
   useEffect(() => {
@@ -17,7 +17,6 @@ const Home = () => {
         console.log(error)
       })
   }, [])
-
 
   return (
     <div className="HomePage">
@@ -32,13 +31,13 @@ const Home = () => {
         <source src={video} type="video/webm" />
       </video>
       <div className="Home-box">
-      <h1 className="Home-title">Welcome To Stadium App!</h1>
+        <h1 className="Home-title">Welcome To The Stadium App!</h1>
       </div>
       <Typography variant="h4" className="Home-moto" gutterBottom>
         Your Gateway to the Greatest Games.
       </Typography>
       <Typography variant="h5" gutterBottom>
-        Some of the Matches:
+        Incoming Matches:
       </Typography>
       <Grid container spacing={2} justifyContent="center">
         {matches.map((match) => (
