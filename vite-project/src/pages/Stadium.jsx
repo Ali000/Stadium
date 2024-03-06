@@ -9,6 +9,7 @@ import ListItem from "@mui/material/ListItem"
 import ListItemText from "@mui/material/ListItemText"
 import Divider from "@mui/material/Divider"
 import TextField from "@mui/material/TextField"
+import Button from "@mui/material/Button"
 
 const Stadium = ({ user }) => {
   const navigate = useNavigate()
@@ -146,8 +147,20 @@ const Stadium = ({ user }) => {
                   <ListItemText
                     primary={
                       <div className="stadium-edit-btn">
-                        <button onClick={handleDelete}>Delete</button>
-                        <button onClick={handleUpdate}>Update</button>
+                        <Button
+                          variant="outlined"
+                          color="success"
+                          onClick={handleDelete}
+                        >
+                          Delete
+                        </Button>
+                        <Button
+                          variant="outlined"
+                          color="success"
+                          onClick={handleUpdate}
+                        >
+                          Update
+                        </Button>
                       </div>
                     }
                   />
@@ -205,9 +218,15 @@ const Stadium = ({ user }) => {
                             ></TextField>
                           </label>
                           <br />
-                          <button type="submit" disabled={isBooked}>
+                          {/* <button type="submit">Book</button> */}
+                          <Button
+                            variant="outlined"
+                            color="success"
+                            type="submit"
+                            disabled={isBooked}
+                          >
                             Book
-                          </button>
+                          </Button>
                         </form>
                       }
                     />
