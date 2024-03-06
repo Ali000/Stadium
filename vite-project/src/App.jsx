@@ -1,39 +1,40 @@
-import "./App.css"
-import { useState, useEffect } from "react"
-import { Route, Routes } from "react-router-dom"
-import { CheckSession } from "./services/Auth"
-import Nav from "./components/Nav"
-import Home from "./pages/Home"
-import MatchesList from "./pages/MatchesList"
-import StadiumsList from "./pages/StadiumsList"
-import About from "./pages/About"
-import Login from "./pages/Login"
-import Register from "./pages/Register"
-import TeamsList from "./pages/TeamsList"
-import Team from "./pages/Team"
-import TeamUpdate from "./pages/TeamUpdate"
-import AddTeam from "./pages/AddTeam"
-import Stadium from "./pages/Stadium"
-import StadiumUpdate from "./pages/StadiumUpdate"
-import AddStadium from "./pages/AddStadium"
-import { createTheme, ThemeProvider } from "@mui/material"
-import NewMatchCard from "./components/NewMatchCard"
-import Match from "./pages/Match"
-import Profile from "./pages/Profile"
+import './App.css'
+import { useState, useEffect } from 'react'
+import { Route, Routes, useNavigate } from 'react-router-dom'
+import { CheckSession } from './services/Auth'
+import Nav from './components/Nav'
+import Home from './pages/Home'
+import MatchesList from './pages/MatchesList'
+import StadiumsList from './pages/StadiumsList'
+import About from './pages/About'
+import Login from './pages/Login'
+import Register from './pages/Register'
+import TeamsList from './pages/TeamsList'
+import Team from './pages/Team'
+import TeamUpdate from './pages/TeamUpdate'
+import AddTeam from './pages/AddTeam'
+import Stadium from './pages/Stadium'
+import StadiumUpdate from './pages/StadiumUpdate'
+import AddStadium from './pages/AddStadium'
+import { createTheme, ThemeProvider } from '@mui/material'
+import NewMatchCard from './components/NewMatchCard'
+import Match from './pages/Match'
+import Profile from './pages/Profile'
 const App = () => {
+  const navigate = useNavigate()
   const [user, setUser] = useState(null)
 
   const theme = createTheme({
     palette: {
-      mode: "dark",
+      mode: 'dark',
       success: {
-        main: "#F0A500",
-      },
-    },
+        main: '#F0A500'
+      }
+    }
   })
 
   useEffect(() => {
-    const token = localStorage.getItem("token")
+    const token = localStorage.getItem('token')
     if (token) {
       checkToken()
     }
@@ -60,6 +61,7 @@ const App = () => {
         </header>
         <main>
           <Routes>
+            <Route path="/" element={<Home />} />
             <Route path="/Home" element={<Home />} />
             <Route path="/MatchesList" element={<MatchesList />} />
             <Route
