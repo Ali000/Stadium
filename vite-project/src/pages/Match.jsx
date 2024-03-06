@@ -1,12 +1,21 @@
 import { useState, useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import Client from "../services/api"
+import Table from "@mui/material/Table"
+import TableBody from "@mui/material/TableBody"
+import TableCell from "@mui/material/TableCell"
+import TableContainer from "@mui/material/TableContainer"
+import TableHead from "@mui/material/TableHead"
+import TableRow from "@mui/material/TableRow"
+import Paper from "@mui/material/Paper"
+import Button from "@mui/material/Button"
 
 const Match = (props) => {
   const navigate = useNavigate()
   const [matchDetails, setMatchDetails] = useState({})
   // const [found, setFound] = useState(false)
-  let { id } = useParams()
+  // let { id } = useParams()
+  let id = props.id
   let oldMatchDetails
   let time
   // let from
@@ -43,8 +52,12 @@ const Match = (props) => {
     // navigate("/match/" + id)
   }
   return (
-    <div>
-      <h3>Name: {matchDetails.name} </h3>
+    <TableRow
+      // key={matchDetails._id}
+      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+    >
+      {/* // <div> */}
+      {/* <h3>Name: {matchDetails.name} </h3>
       <h3>Stadium: {matchDetails?.stadium?.name} </h3>
       <h3>Teams: </h3>
       <h5>Team 1: {matchDetails?.teams?.home?.name}</h5>
@@ -60,8 +73,32 @@ const Match = (props) => {
         </>
       ) : (
         <div>no seats available</div>
-      )}
-    </div>
+      )} */}
+      {/* <> */}
+
+      <TableCell component="th" scope="row">
+        {matchDetails.name}
+      </TableCell>
+      <TableCell>{matchDetails?.stadium?.name}</TableCell>
+      <TableCell>{matchDetails?.teams?.home?.name}</TableCell>
+      <TableCell>{matchDetails?.teams?.away?.name}</TableCell>
+      <TableCell>{matchDetails?.time}</TableCell>
+      <TableCell>$ {matchDetails?.price}</TableCell>
+      <TableCell>{matchDetails?.seats}</TableCell>
+      <TableCell>
+        {/* <button onClick={buyticket}>buy a ticket</button> */}
+        <Button
+          variant="outlined"
+          color="success"
+          type="submit"
+          onClick={buyticket}
+        >
+          Book Ticket
+        </Button>
+      </TableCell>
+
+      {/* // </div> */}
+    </TableRow>
   )
 }
 

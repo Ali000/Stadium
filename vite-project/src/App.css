@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 
 body {
   color: #f0a500;
@@ -18,6 +18,10 @@ main {
 .container {
   display: flex;
   flex-wrap: wrap;
+}
+
+.matches-outer-wrap {
+  width: 30%;
 }
 
 .team-card {
@@ -49,7 +53,7 @@ main {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 .Login-Page {
   min-height: 100vh;
@@ -96,7 +100,7 @@ main {
 }
 .container-login .cover::before,
 .container-login .cover::after {
-  content: '';
+  content: "";
   position: absolute;
   height: 100%;
   width: 100%;
@@ -158,7 +162,7 @@ main {
   color: #f0a500;
 }
 .forms .form-content .title:before {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   bottom: 0;
