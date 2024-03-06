@@ -1,17 +1,17 @@
-import { useRef, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { SignIn } from '../services/Auth'
-import { SignUp } from '../services/Auth'
-import { useState } from 'react'
-import LockIcon from '@mui/icons-material/Lock'
-import EmailIcon from '@mui/icons-material/Email'
-import PersonIcon from '@mui/icons-material/Person'
-import { Button } from '@mui/material'
-import { useNavigate } from 'react-router-dom'
+import { useRef, useEffect } from "react"
+import { Link } from "react-router-dom"
+import { SignIn } from "../services/Auth"
+import { SignUp } from "../services/Auth"
+import { useState } from "react"
+import LockIcon from "@mui/icons-material/Lock"
+import EmailIcon from "@mui/icons-material/Email"
+import PersonIcon from "@mui/icons-material/Person"
+import { Button } from "@mui/material"
+import { useNavigate } from "react-router-dom"
 const Login = (props) => {
   let navigate = useNavigate()
   const [flipped, setFlipped] = useState(false)
-  const [accountType, setAccountType] = useState('customer')
+  const [accountType, setAccountType] = useState("customer")
   const loginEmail = useRef(null)
   const loginPassword = useRef(null)
   const signupName = useRef(null)
@@ -25,17 +25,18 @@ const Login = (props) => {
         name: signupName.current.value,
         password: signupPassword.current.value,
         email: signupEmail.current.value,
-        role: accountType
+        role: accountType,
       })
-      props.setUser(payload)
-      navigate('/home')
+      // console.log(payload)
+      // props.setUser(payload)
+      navigate("/Login")
     } else {
       const payload = await SignIn({
         email: loginEmail.current.value,
-        password: loginPassword.current.value
+        password: loginPassword.current.value,
       })
       props.setUser(payload)
-      navigate('/home')
+      navigate("/home")
     }
 
     loginEmail.current.value = null
@@ -53,7 +54,7 @@ const Login = (props) => {
           id="flip"
           checked={flipped}
           onChange={(e) => setFlipped(e.target.checked)}
-          style={{ display: 'none' }}
+          style={{ display: "none" }}
         />
         <div className="cover">
           <div className="front">
@@ -63,7 +64,8 @@ const Login = (props) => {
             />
             <div className="text">
               <span className="text-1">
-                The perfect website for<br /> sports entertainment
+                The perfect website for
+                <br /> sports entertainment
               </span>
               <span className="text-2">Let's get connected</span>
             </div>
@@ -96,7 +98,7 @@ const Login = (props) => {
                   </div>
                   <div className="input-box">
                     <i className="fas fa-lock">
-                      {' '}
+                      {" "}
                       <LockIcon />
                     </i>
                     <input
@@ -118,7 +120,7 @@ const Login = (props) => {
                       className="Signup-link"
                       onClick={() => setFlipped(!flipped)}
                     >
-                      {' '}
+                      {" "}
                       Signup now
                     </span>
                   </div>
@@ -168,7 +170,7 @@ const Login = (props) => {
                         type="radio"
                         name="accountType"
                         value="customer"
-                        checked={accountType === 'customer'}
+                        checked={accountType === "customer"}
                         onChange={(e) => setAccountType(e.target.value)}
                       />
                       Customer
@@ -178,7 +180,7 @@ const Login = (props) => {
                         type="radio"
                         name="accountType"
                         value="enterprise"
-                        checked={accountType === 'enterprise'}
+                        checked={accountType === "enterprise"}
                         onChange={(e) => setAccountType(e.target.value)}
                       />
                       Enterprise
@@ -193,7 +195,7 @@ const Login = (props) => {
                       className="Signup-link"
                       onClick={() => setFlipped(!flipped)}
                     >
-                      {' '}
+                      {" "}
                       Login now
                     </span>
                   </div>

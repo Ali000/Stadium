@@ -38,9 +38,9 @@ const Nav = ({ user, logOut }) => {
             >
               <ListItemButton>
                 <ListItemIcon>
-                  {index === 0 ? <StadiumIcon /> : null}
-                  {index === 1 ? <SportsFootballIcon /> : null}
-                  {index === 2 ? <GroupsIcon /> : null}
+                  {index === 0 ? <StadiumIcon color="success" /> : null}
+                  {index === 1 ? <SportsFootballIcon color="success" /> : null}
+                  {index === 2 ? <GroupsIcon color="success" /> : null}
                 </ListItemIcon>
                 <ListItemText primary={text} />
               </ListItemButton>
@@ -59,9 +59,9 @@ const Nav = ({ user, logOut }) => {
             >
               <ListItemButton>
                 <ListItemIcon>
-                  {index === 0 ? <HomeIcon /> : null}
-                  {index === 1 ? <AccountBoxIcon /> : null}
-                  {index === 2 ? <InfoSharpIcon /> : null}
+                  {index === 0 ? <HomeIcon color="success" /> : null}
+                  {index === 1 ? <AccountBoxIcon color="success" /> : null}
+                  {index === 2 ? <InfoSharpIcon color="success" /> : null}
                 </ListItemIcon>
                 <ListItemText primary={text} />
               </ListItemButton>
