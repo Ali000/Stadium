@@ -47,7 +47,11 @@ const StadiumsList = (props) => {
           stadiums.map((stadium) => (
             <div className="stadium-card-single" key={stadium._id}>
               <Link className="anchor-no-line" to={"/Stadium/" + stadium._id}>
-                <StadiumCard key={stadium._id} stadium={stadium} />
+                <StadiumCard
+                  // image={stadium.images[0]}
+                  key={stadium._id}
+                  stadium={stadium}
+                />
               </Link>
             </div>
           ))
