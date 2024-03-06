@@ -29,7 +29,7 @@ const TeamsList = () => {
 
   return (
     <div>
-      <Search onSubmit={handleSubmit} searchRef={searchRef} />
+      {/* <Search onSubmit={handleSubmit} searchRef={searchRef} /> */}
       <h1 className="pages-title">Teams</h1>
       <div className="container" key={Math.random()}>
         {pressed ? (
@@ -46,7 +46,7 @@ const TeamsList = () => {
           ))
         )}
       </div>
-      <NewTeamCard />
+      {/* <NewTeamCard /> */}
     </div>
   )
 }

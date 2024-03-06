@@ -10,6 +10,8 @@ import MenuItem from "@mui/material/MenuItem"
 import Stack from "@mui/material/Stack"
 import { styled } from "@mui/material/styles"
 import Paper from "@mui/material/Paper"
+import Button from "@mui/material/Button"
+
 import dayjs from "dayjs"
 // import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker"
 
@@ -51,9 +53,6 @@ const NewMatchCard = (props) => {
   }
 
   const handleChange = (e) => {
-    console.log("🚀 ~ handleChange ~ e:", e.target.value)
-    console.log("🚀 ~ handleChange ~ e.target:", e.target)
-
     obj = {
       ...obj,
       [e.target.name]: e.target.value,
@@ -170,6 +169,7 @@ const NewMatchCard = (props) => {
                       </MenuItem>
                     ))}
                   </TextField>
+                  <br />
                   <label htmlFor="price">Ticket Price:</label>
                   <TextField
                     type="number"
@@ -178,7 +178,11 @@ const NewMatchCard = (props) => {
                     onChange={handleChange}
                   ></TextField>
                   <div>
-                    <button type="submit">Add Match</button>
+                    {/* <button type="submit">Add Match</button> */}
+                    <br />
+                    <Button variant="outlined" color="success" type="submit">
+                      Add Match
+                    </Button>
                   </div>
                 </form>
               }

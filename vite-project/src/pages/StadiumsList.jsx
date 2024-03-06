@@ -30,7 +30,9 @@ const StadiumsList = () => {
 
   return (
     <div className="Stadiums-List-Page">
-      <Search onSubmit={handleSubmit} searchRef={searchRef} />
+      {/* <Search onSubmit={handleSubmit} searchRef={searchRef} />
+       */}
+      <NewStadiumCard />
       <h1 className="pages-title">Stadiums List</h1>
       <div className="container stadium-card-wrap">
         {pressed ? (
@@ -51,7 +53,6 @@ const StadiumsList = () => {
           ))
         )}
       </div>
-      <NewStadiumCard />
     </div>
   )
 }
