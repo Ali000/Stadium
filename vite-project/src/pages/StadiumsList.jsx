@@ -4,7 +4,7 @@ import Client from "../services/api"
 import Search from "../components/Search"
 import StadiumCard from "../components/StadiumCard"
 import NewStadiumCard from "../components/NewStadiumCard"
-const StadiumsList = () => {
+const StadiumsList = (props) => {
   const searchRef = useRef(null)
   const [searchResults, setSearchResults] = useState([])
   const [stadiums, setStadiums] = useState([])
@@ -32,7 +32,7 @@ const StadiumsList = () => {
     <div className="Stadiums-List-Page">
       {/* <Search onSubmit={handleSubmit} searchRef={searchRef} />
        */}
-      <NewStadiumCard />
+      <NewStadiumCard user={props.user} />
       <h1 className="pages-title">Stadiums List</h1>
       <div className="container stadium-card-wrap">
         {pressed ? (
