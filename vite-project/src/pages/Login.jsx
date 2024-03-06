@@ -63,7 +63,7 @@ const Login = (props) => {
             />
             <div className="text">
               <span className="text-1">
-                Every new friend is a <br /> new adventure
+                The perfect website for<br /> sports entertainment
               </span>
               <span className="text-2">Let's get connected</span>
             </div>
