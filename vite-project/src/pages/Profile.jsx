@@ -1,34 +1,45 @@
-import { useEffect, useState } from 'react'
-import Client from '../services/api'
+import { useEffect, useState } from "react"
+import Client from "../services/api"
 const Profile = ({ userId }) => {
   const [userData, setUserData] = useState({})
   const [relatedData, setRelatedData] = useState([])
-  const [roles, setRoles] = useState(['customer', 'enterprise', 'Admin'])
+  const [roles, setRoles] = useState(["customer", "enterprise", "Admin"])
 
   const handleSubmit = async (e, user) => {
     e.preventDefault()
     const dataToBeSend = {
-      role: e.target.value
+      role: e.target.value,
     }
-    const response = await Client.put('/users/' + user, dataToBeSend)
-    setRoles(['customer', 'enterprise', 'Admin'])
+    const response = await Client.put("/users/" + user, dataToBeSend)
+    setRoles(["customer", "enterprise", "Admin"])
   }
 
   useEffect(() => {
-    const getInfo = () => {
-      Client.get(`/users/${userId}`)
+    const getInfo = async () => {
+      await Client.get(`/users/${userId}`)
         .then((response) => {
+          console.log(response.data)
           setUserData(response.data)
-          if (response.data.role === 'customer') {
-            Client.get('/tickets').then((ticketResponse) => {
-              setRelatedData(ticketResponse.data)
+          if (response.data.role === "customer") {
+            Client.get("/tickets").then((ticketResponse) => {
+              let tickets = []
+              for (let index = 0; index < ticketResponse.data.length; index++) {
+                const element = ticketResponse.data[index]
+                console.log("🚀 ~ Client.get ~ element:", element)
+                if (element.user == userId) {
+                  tickets.push(element)
+                }
+              }
+              console.log("🚀 ~ Client.get ~ tickets:", tickets)
+              ticketResponse.data
+              setRelatedData(tickets)
             })
-          } else if (response.data.role === 'enterprise') {
-            Client.get('/stadiums').then((stadiumResponse) => {
-              setRelatedData(stadiumResponse.data)
-            })
-          } else if (response.data.role === 'Admin') {
-            Client.get('/users').then((stadiumResponse) => {
+          } else if (response.data.role === "enterprise") {
+            // Client.get("/stadiums").then((stadiumResponse) => {
+            //   setRelatedData(stadiumResponse.data)
+            // })
+          } else if (response.data.role === "Admin") {
+            Client.get("/users").then((stadiumResponse) => {
               setRelatedData(stadiumResponse.data)
             })
           }
@@ -47,7 +58,7 @@ const Profile = ({ userId }) => {
       <p>Email: {userData.email}</p>
       <p>Role: {userData.role}</p>
 
-      {userData.role === 'customer' && (
+      {userData.role === "customer" && (
         <div>
           <h3>My Tickets</h3>
           {relatedData.map((ticket, index) => (
@@ -59,10 +70,11 @@ const Profile = ({ userId }) => {
         </div>
       )}
 
-      {userData.role === 'enterprise' && (
+      {userData.role === "enterprise" && (
         <div>
           <h3>My Stadiums</h3>
-          {relatedData.map((stadium, index) => (
+          {console.log(userData)}
+          {userData.stadiums.map((stadium, index) => (
             <div key={index}>
               <p>Name: {stadium.name}</p>
               <p>Location: {stadium.location}</p>
@@ -70,7 +82,7 @@ const Profile = ({ userId }) => {
           ))}
         </div>
       )}
-      {userData.role === 'Admin' && (
+      {userData.role === "Admin" && (
         <div>
           <h3>list of all users</h3>
           {relatedData.map((user) => (

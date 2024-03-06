@@ -10,11 +10,14 @@ import MenuItem from "@mui/material/MenuItem"
 import Stack from "@mui/material/Stack"
 import { styled } from "@mui/material/styles"
 import Paper from "@mui/material/Paper"
+import dayjs from "dayjs"
+// import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker"
 
 const NewMatchCard = (props) => {
   const [teams, setTeams] = useState([])
   const navigate = useNavigate()
   // navigate(`/Match/New`)
+  let today = new Date()
   const handleClick = () => {}
   // const handleSubmit = () => {}
 
@@ -88,10 +91,15 @@ const NewMatchCard = (props) => {
           arrayOfTeams.push(team)
         }
       })
+      // console.log(dayjs("2024-05-20"))
+      // console.log(props?.stadium?.props)
+
       // console.log(response.data)
       setTeams(arrayOfTeams)
     }
     getTeams()
+
+    // alert(maxDate)
   }, [props.stadium])
 
   return (
@@ -120,9 +128,15 @@ const NewMatchCard = (props) => {
                   ></TextField>
                   <label htmlFor="from">from: </label>
                   <TextField
-                    type="date"
+                    type="datetime-local"
                     id="from"
                     name="from"
+                    // min={props?.stadium?.props?.bookings?.from}
+                    max="2024-03-12T15:00"
+                    // value={today.toString()}
+                    value="2024-03-07T12:00"
+                    // value={props?.stadium?.props?.bookings?.from}
+                    // maxDate={dayjs("2024-05-20")}
                     onChange={handleChange}
                   ></TextField>
 
