@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
-import Client from '../services/api'
+import { useState, useEffect } from "react"
+import { useNavigate, useParams } from "react-router-dom"
+import Client from "../services/api"
 
 const Match = (props) => {
   const navigate = useNavigate()
@@ -14,7 +14,7 @@ const Match = (props) => {
 
   useEffect(() => {
     const getMatch = async () => {
-      const response = await Client.get('/matches/' + id)
+      const response = await Client.get("/matches/" + id)
       console.log(response.data)
       oldMatchDetails = response.data
       let time = new Date(response.data.time)
@@ -22,7 +22,11 @@ const Match = (props) => {
       // to = new Date(response.data.time.to)
       // response.data.time.from = `${from.getFullYear()}-${from.getMonth()}-${from.getDay()}`
       // response.data.time.to = `${to.getFullYear()}-${to.getMonth()}-${to.getDay()}`
-      response.data.time = `${time.getFullYear()}-${time.getMonth()}-${time.getDay()}`
+      response.data.time = `${time.getFullYear()}-${time.getMonth()}-${time.getDay()}  ${
+        time.getHours() % 12 < 10 ? "0" : ""
+      }${time.getHours() % 12}:${
+        time.getMinutes() < 10 ? "0" : ""
+      }${time.getMinutes()} ${time.getHours() > 12 ? "PM" : "AM"}`
       setMatchDetails(response.data)
     }
 
@@ -30,10 +34,10 @@ const Match = (props) => {
   }, [id, props])
 
   const buyticket = async () => {
-    const response = await Client.post('/tickets/', {
+    const response = await Client.post("/tickets/", {
       user: props.user.id,
       match: matchDetails._id,
-      price: matchDetails.price
+      price: matchDetails.price,
     })
     setMatchDetails((prev) => ({ ...prev, seats: prev.seats - 1 }))
     // navigate("/match/" + id)
