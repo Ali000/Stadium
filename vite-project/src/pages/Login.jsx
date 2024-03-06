@@ -1,41 +1,48 @@
 import { useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { SignIn } from '../services/Auth'
+import { SignUp } from '../services/Auth'
 import { useState } from 'react'
 import LockIcon from '@mui/icons-material/Lock'
 import EmailIcon from '@mui/icons-material/Email'
 import PersonIcon from '@mui/icons-material/Person'
+import { Button } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 const Login = (props) => {
+  let navigate = useNavigate()
   const [flipped, setFlipped] = useState(false)
   const [accountType, setAccountType] = useState('customer')
   const loginEmail = useRef(null)
   const loginPassword = useRef(null)
-  const signupName= useRef(null)
-  const signupEmail= useRef(null)
-  const signupPassword= useRef(null)
+  const signupName = useRef(null)
+  const signupEmail = useRef(null)
+  const signupPassword = useRef(null)
   const handleSubmit = async (e, isSignup) => {
     e.preventDefault()
 
     if (isSignup) {
-      console.log('Signup:', {
-        name: signupName,
-        email: signupEmail,
-        password: signupPassword,
-        type: accountType
+      const payload = await SignUp({
+        name: signupName.current.value,
+        password: signupPassword.current.value,
+        email: signupEmail.current.value,
+        role: accountType
       })
+      props.setUser(payload)
+      navigate('/home')
     } else {
       const payload = await SignIn({
         email: loginEmail.current.value,
         password: loginPassword.current.value
       })
       props.setUser(payload)
+      navigate('/home')
     }
 
-    loginEmail.current.value=null
-    loginPassword.current.value=null
-    signupName.current.value=null
- SignupEmail('')
-    setSignupPassword('')
+    loginEmail.current.value = null
+    loginPassword.current.value = null
+    signupName.current.value = null
+    signupEmail.current.value = null
+    signupPassword.current.value = null
   }
 
   return (
@@ -74,7 +81,7 @@ const Login = (props) => {
           <div className="form-content">
             <div className="login-form">
               <div className="title">Login</div>
-              <form action={handleSubmit}>
+              <form onSubmit={(e) => handleSubmit(e, false)}>
                 <div className="input-boxes">
                   <div className="input-box">
                     <i className="fas fa-envelope">
@@ -120,13 +127,18 @@ const Login = (props) => {
             </div>
             <div className="signup-form">
               <div className="title">Signup</div>
-              <form action="#">
+              <form onSubmit={(e) => handleSubmit(e, true)}>
                 <div className="input-boxes">
                   <div className="input-box">
                     <i className="fas fa-user">
                       <PersonIcon />
                     </i>
-                    <input type="text" placeholder="Enter your name" required />
+                    <input
+                      type="text"
+                      placeholder="Enter your name"
+                      required
+                      ref={signupName}
+                    />
                   </div>
                   <div className="input-box">
                     <i className="fas fa-envelope">
@@ -136,6 +148,7 @@ const Login = (props) => {
                       type="text"
                       placeholder="Enter your email"
                       required
+                      ref={signupEmail}
                     />
                   </div>
                   <div className="input-box">
@@ -146,10 +159,33 @@ const Login = (props) => {
                       type="password"
                       placeholder="Enter your password"
                       required
+                      ref={signupPassword}
                     />
                   </div>
+                  <div className="input-box">
+                    <label>
+                      <input
+                        type="radio"
+                        name="accountType"
+                        value="customer"
+                        checked={accountType === 'customer'}
+                        onChange={(e) => setAccountType(e.target.value)}
+                      />
+                      Customer
+                    </label>
+                    <label>
+                      <input
+                        type="radio"
+                        name="accountType"
+                        value="enterprise"
+                        checked={accountType === 'enterprise'}
+                        onChange={(e) => setAccountType(e.target.value)}
+                      />
+                      Enterprise
+                    </label>
+                  </div>
                   <div className="button input-box">
-                    <button type="submit" value="Submit" />
+                    <input type="submit" value="Submit" />
                   </div>
                   <div className="text sign-up-text">
                     Already have an account?
