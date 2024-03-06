@@ -67,7 +67,9 @@ const Match = (props) => {
       {matchDetails?.seats > 0 ? (
         <>
           <h3>available seats: {matchDetails?.seats}</h3>
-          <button onClick={buyticket}>buy a ticket</button>
+          {props?.user?.role == "customer" || props?.user?.role == "Admin" ? (
+            <button onClick={buyticket}>buy a ticket</button>
+          ) : null}
         </>
       ) : (
         <div>no seats available</div>

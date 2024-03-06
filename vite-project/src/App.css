@@ -275,12 +275,12 @@ nav * {
   position: fixed;
   z-index: 50;
   top: 0;
-  background-color: #fff;
+  background-color: black;
   border: 1px solid black;
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 0 25px;
+  padding: 5px 25px;
   z-index: 1;
 }
 
@@ -290,6 +290,7 @@ nav * {
 }
 .Login * {
   font-size: 30px;
+  text-decoration: none;
 }
 .Stadiums-List-Page {
   margin-top: 50px;
@@ -472,4 +473,13 @@ nav * {
 .users {
   margin: 6px;
   /* padding: 6px; */
+}
+.Logout-Nav {
+  color: #f0a500;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 0px;
+  text-decoration: none;
 }
