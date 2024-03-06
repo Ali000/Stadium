@@ -87,14 +87,16 @@ const Match = (props) => {
       <TableCell>{matchDetails?.seats}</TableCell>
       <TableCell>
         {/* <button onClick={buyticket}>buy a ticket</button> */}
-        <Button
-          variant="outlined"
-          color="success"
-          type="submit"
-          onClick={buyticket}
-        >
-          Book Ticket
-        </Button>
+        {props?.user?.role == "customer" || props?.user?.role == "Admin" ? (
+          <Button
+            variant="outlined"
+            color="success"
+            type="submit"
+            onClick={buyticket}
+          >
+            Book Ticket
+          </Button>
+        ) : null}
       </TableCell>
 
       {/* // </div> */}
