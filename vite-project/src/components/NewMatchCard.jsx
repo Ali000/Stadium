@@ -134,7 +134,7 @@ const NewMatchCard = (props) => {
                     // min={props?.stadium?.props?.bookings?.from}
                     max="2024-03-12T15:00"
                     // value={today.toString()}
-                    value="2024-03-07T12:00"
+                    // value="2024-03-07T12:00"
                     // value={props?.stadium?.props?.bookings?.from}
                     // maxDate={dayjs("2024-05-20")}
                     onChange={handleChange}
