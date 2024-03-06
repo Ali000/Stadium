@@ -147,7 +147,7 @@ const Nav = ({ user, logOut }) => {
         </Drawer>
         <div className="Login">
           {user ? (
-            <Link onClick={logOut}>
+            <Link onClick={logOut} to="/home">
               <span className="Logout-Nav">
                 Logout
                 <LogoutIcon style={{ color: '#f0a500', fontSize: 20 }} />
