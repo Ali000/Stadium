@@ -13,6 +13,11 @@ import TextField from "@mui/material/TextField"
 import Button from "@mui/material/Button"
 import Snackbar from "@mui/material/Snackbar"
 import Alert from "@mui/material/Alert"
+import Backdrop from "@mui/material/Backdrop"
+import Box from "@mui/material/Box"
+import Modal from "@mui/material/Modal"
+import Fade from "@mui/material/Fade"
+import Typography from "@mui/material/Typography"
 
 const Stadium = ({ user }) => {
   const navigate = useNavigate()
@@ -23,9 +28,27 @@ const Stadium = ({ user }) => {
   const [userDetails, setUserDetails] = useState({})
   const [open, setOpen] = React.useState(false)
   const [slides, setSlides] = useState([])
+  const [openModal, setOpenModal] = React.useState(false)
+
+  const handleOpenModal = () => setOpenModal(true)
+  const handleCloseModal = () => setOpenModal(false)
 
   let { id } = useParams()
   let images
+  let obj = {}
+
+  const styleModal = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 400,
+    bgcolor: "background.paper",
+    border: "2px solid #000",
+    boxShadow: 24,
+    p: 4,
+  }
+
   const style = {
     //style for stadium info
     py: 0,
@@ -110,8 +133,24 @@ const Stadium = ({ user }) => {
     })
   }
 
-  const handleUpdate = () => {
-    navigate(`/Stadium/Update/${id}`)
+  const handleUpdate = async (e) => {
+    e.preventDefault()
+    let response = await Client.put(`/stadiums/${id}`, obj)
+    // console.log(response)
+    // console.log(obj)
+    let newstadDetails = { ...stadiumDetails, ...obj }
+    console.log(newstadDetails)
+    console.log(stadiumDetails)
+    console.log(obj)
+    setStadiumDetails(newstadDetails)
+    setOpenModal(false)
+  }
+
+  const handleChange = (e) => {
+    obj = {
+      ...obj,
+      [e.target.name]: e.target.value,
+    }
   }
 
   const handleBookingSubmit = (e) => {
@@ -158,6 +197,86 @@ const Stadium = ({ user }) => {
 
   return (
     <div>
+      <Modal
+        aria-labelledby="transition-modal-title"
+        aria-describedby="transition-modal-description"
+        open={openModal}
+        onClose={handleCloseModal}
+        closeAfterTransition
+        slots={{ backdrop: Backdrop }}
+        slotProps={{
+          backdrop: {
+            timeout: 500,
+          },
+        }}
+      >
+        <Fade in={openModal}>
+          <Box sx={styleModal}>
+            <Typography id="transition-modal-title" variant="h6" component="h2">
+              Edit Staduim
+            </Typography>
+            <br />
+            <form onSubmit={handleUpdate} className="add-stadium-form-modal">
+              <label htmlFor="text">Name:</label>
+              {/* <input type="text" id="name" ref={nameRef} /> */}
+              <TextField
+                placeholder="Name"
+                variant="outlined"
+                type="text"
+                id="name"
+                name="name"
+                onChange={handleChange}
+                defaultValue={stadiumDetails.name}
+              />
+              <br />
+              <label htmlFor="text">Sport:</label>
+              <TextField
+                placeholder="Sport"
+                variant="outlined"
+                type="text"
+                id="sport"
+                name="sport"
+                onChange={handleChange}
+                defaultValue={stadiumDetails.sport}
+              />
+              <br />
+              <label className="add-text" htmlFor="text">
+                Seats:
+              </label>
+              {/* <input type="number" id="seats" ref={seatsRef} /> */}
+              <TextField
+                placeholder="Seats"
+                variant="outlined"
+                type="number"
+                id="seats"
+                name="seats"
+                onChange={handleChange}
+                defaultValue={stadiumDetails.seats}
+              />
+              <br />
+              <label className="add-text" htmlFor="text">
+                location
+              </label>
+              {/* <input type="text" id="location" ref={locationRef} /> */}
+              <TextField
+                placeholder="Location"
+                variant="outlined"
+                type="text"
+                id="location"
+                name="location"
+                onChange={handleChange}
+                defaultValue={stadiumDetails.location}
+              />
+              <br />
+              <div className="flexa item">
+                <Button variant="outlined" color="success" type="submit">
+                  Update
+                </Button>
+              </div>
+            </form>
+          </Box>
+        </Fade>
+      </Modal>
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
         <Alert
           onClose={handleClose}
@@ -209,7 +328,7 @@ const Stadium = ({ user }) => {
                           <Button
                             variant="outlined"
                             color="success"
-                            onClick={handleUpdate}
+                            onClick={handleOpenModal}
                           >
                             Update
                           </Button>

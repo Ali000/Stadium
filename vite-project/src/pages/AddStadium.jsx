@@ -22,7 +22,7 @@ const AddStadium = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    console.log(obj)
+    // console.log(obj)
     Client.post(`/stadiums`, obj).then((response) => {
       console.log(response)
       navigate("/Stadiumslist")
