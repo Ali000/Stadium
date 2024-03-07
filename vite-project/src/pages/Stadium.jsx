@@ -169,7 +169,7 @@ const Stadium = ({ user }) => {
       ],
     }
 
-    Client.put(`/stadiums/${id}`, {
+    Client.put(`/stadiums/booking/${id}`, {
       stadium: updatedStadiumDetails,
       user: user,
     })
