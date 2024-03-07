@@ -139,9 +139,9 @@ const Stadium = ({ user }) => {
     // console.log(response)
     // console.log(obj)
     let newstadDetails = { ...stadiumDetails, ...obj }
-    console.log(newstadDetails)
-    console.log(stadiumDetails)
-    console.log(obj)
+    // console.log(newstadDetails)
+    // console.log(stadiumDetails)
+    // console.log(obj)
     setStadiumDetails(newstadDetails)
     setOpenModal(false)
   }
