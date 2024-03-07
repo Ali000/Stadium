@@ -37,7 +37,7 @@ const Match = (props) => {
   useEffect(() => {
     const getMatch = async () => {
       const response = await Client.get("/matches/" + id)
-      console.log(response.data)
+      // console.log(response.data)
       oldMatchDetails = response.data
       let time = new Date(response.data.time)
       // from = new Date(response.data.time.from)

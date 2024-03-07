@@ -57,13 +57,13 @@ const NewMatchCard = (props) => {
       ...obj,
       [e.target.name]: e.target.value,
     }
-    console.log(obj)
+    // console.log(obj)
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    console.log(obj)
+    // console.log(obj)
     const dataToBeSend = {
       name: obj.name,
       time: obj.from,
